@@ -10,7 +10,7 @@ authors:
 superuser: true
 
 # Role/position
-role: Software Engineer, Network Engineer
+role: Software, Network
 
 # Organizations/Affiliations
 # organizations:
@@ -24,6 +24,7 @@ interests:
 - Coding
 - Networking
 - Open Source
+- Sports (Soccer & Bandminton)
 
 # education:
 #  courses:
@@ -71,4 +72,5 @@ user_groups:
 - Visitors
 ---
 
-Nelson Bighetti is a professor of artificial intelligence at the Stanford AI Lab. His research interests include distributed robotics, mobile computing and programmable matter. He leads the Robotic Neurobiology group, which develops self-reconfiguring robots, systems of self-organizing robots, and mobile sensor networks.
+Hey,
+My name is Hongwei Li, a software engineer and network engineer. This site is a hub of my documents for recording learning, experience. I hope you find something awesome, useful and helpful.
