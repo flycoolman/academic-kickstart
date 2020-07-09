@@ -16,12 +16,42 @@
 [[main]]
   name = "Posts"
   url = "#posts"
-  weight = 20
+  weight = 100
+
+#[[main]]
+#  name = "Projects"
+#  url = "#projects"
+#  weight = 200
 
 [[main]]
-  name = "Projects"
-  url = "#projects"
-  weight = 30
+  name = "Coding"
+  url = "python/"
+  weight = 300
+  identifier = "coding"
+
+[[main]]
+  name = "Python"
+  url = "python/"
+  weight = 310
+  parent = "coding"
+
+[[main]]
+  name = "Java"
+  url = "java/"
+  weight = 320
+  parent = "coding"
+
+[[main]]
+  name = "Go"
+  url = "go/"
+  weight = 330
+  parent = "coding"
+
+[[main]]
+  name = "JavaScript"
+  url = "javascript/"
+  weight = 340
+  parent = "coding"
 
 #[[main]]
 #  name = "Publications"
@@ -29,18 +59,33 @@
 #  weight = 40
 
 [[main]]
+  name = "Linux"
+  url = "linux/"
+  weight = 400
+
+[[main]]
+  name = "DevOps"
+  url = "devops/"
+  weight = 500
+
+[[main]]
+  name = "Networking"
+  url = "networking/"
+  weight = 600
+
+[[main]]
   name = "Courses"
   url = "courses/"
-  weight = 50
+  weight = 700
 
 #[[main]]
 #  name = "Contact"
 #  url = "#contact"
-#  weight = 60
+#  weight = 800
 
 # Link to a PDF of your resume/CV from the menu.
 # To enable, copy your resume/CV to `static/files/cv.pdf` and uncomment the lines below.
 # [[main]]
 #    name = "CV"
 #    url = "files/cv.pdf"
-#    weight = 70
+#    weight = 900
