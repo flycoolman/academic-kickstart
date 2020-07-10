@@ -13,10 +13,10 @@
   url = "#about"
   weight = 10
 
-[[main]]
-  name = "Posts"
-  url = "#posts"
-  weight = 100
+#[[main]]
+#  name = "Posts"
+#  url = "#posts"
+#  weight = 100
 
 #[[main]]
 #  name = "Projects"
@@ -25,13 +25,13 @@
 
 [[main]]
   name = "Coding"
-  url = "python/"
+  url = "coding/"
   weight = 300
   identifier = "coding"
 
 [[main]]
   name = "Python"
-  url = "python/"
+  url = "coding/python/"
   weight = 310
   parent = "coding"
 

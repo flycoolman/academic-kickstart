@@ -1,5 +1,7 @@
 ---
-title:
+title: Coding
+reading_time: true
+
 
 # View.
 #   1 = List
