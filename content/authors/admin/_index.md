@@ -10,7 +10,7 @@ authors:
 superuser: true
 
 # Role/position
-role: Software, Network
+role: Software, Networking
 
 # Organizations/Affiliations
 # organizations:
@@ -18,7 +18,7 @@ role: Software, Network
 #  url: ""
 
 # Short bio (displayed in user profile at end of posts)
-bio: My research interests include distributed robotics, mobile computing and programmable matter.
+bio: Always on the way - Coding, DevOps, Networking.
 
 interests:
 - Coding
@@ -73,4 +73,4 @@ user_groups:
 ---
 
 Hey,
-My name is Hongwei Li, a software engineer and network engineer. This site is a hub of my documents for recording learning, experience. I hope you find something awesome, useful and helpful.
+My name is Hongwei Li, a software engineer and network engineer. This site is a hub of my documents for learning, experience. I hope you find something awesome, useful and helpful. Feel free to follow me on GitHub, send me a message on Twitter, or drop me an email. 
