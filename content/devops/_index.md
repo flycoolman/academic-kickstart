@@ -1,5 +1,6 @@
 ---
-title: Coding
+title: DevOps
+layout: post
 
 
 # View.

@@ -1,5 +1,6 @@
 ---
-title: Coding
+title: Linux
+layout: post
 
 
 # View.

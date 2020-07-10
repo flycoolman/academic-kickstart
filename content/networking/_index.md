@@ -1,5 +1,6 @@
 ---
-title: Coding
+title: Networking
+layout: post
 
 
 # View.

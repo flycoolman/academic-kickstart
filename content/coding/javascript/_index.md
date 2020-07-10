@@ -1,5 +1,5 @@
 ---
-title: Python
+title: Javascript
 layout: post
 type: post
 

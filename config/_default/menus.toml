@@ -37,19 +37,19 @@
 
 [[main]]
   name = "Java"
-  url = "java/"
+  url = "coding/java/"
   weight = 320
   parent = "coding"
 
 [[main]]
   name = "Go"
-  url = "go/"
+  url = "coding/go/"
   weight = 330
   parent = "coding"
 
 [[main]]
   name = "JavaScript"
-  url = "javascript/"
+  url = "coding/javascript/"
   weight = 340
   parent = "coding"
 
