@@ -37,7 +37,6 @@ projects: []
 ---
 
 When I create this website, I find that there are no documents to walk me through each step from 'Hello World' to deployment till customization. This makes me have the idea to create one and help others to understand the whole process.  
-This is the part-1 of this series.
 This is the [**part-1**](https://flycoolman.com/post/build-a-free-website-in-minutes-1/) of [**this series**](https://academic-demo.netlify.com/).
 
 **Highlight your code snippets, take notes on math classes, and draw diagrams from textual representation.**
