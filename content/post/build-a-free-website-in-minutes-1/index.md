@@ -1,7 +1,7 @@
 ---
 title: 'Build A Free Website In Minutes - 1'
 # subtitle: 'Create a beautifully simple website in under 10 minutes :rocket:'
-summary: Learn how to create a static website by Hugo, Github Pages.
+summary: Learn how to create a static website by Hugo, GitHub Pages and Academic.
 authors:
 - admin
 tags:
@@ -12,13 +12,6 @@ tags:
 - Academic
 categories:
 - Basic
-# - Python
-# - Java
-# - Devops
-# - Networking
-# - Linux
-# - Go
-# - Javascript
 - Web Development
 date: "2020-07-11T00:00:00Z"
 lastmod: "2020-07-11T00:00:00Z"
