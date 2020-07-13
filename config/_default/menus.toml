@@ -25,35 +25,31 @@
 
 [[main]]
   name = "Coding"
-#  url = "coding/"
+  url = "coding/"
   weight = 300
   identifier = "coding"
 
 [[main]]
   name = "Python"
-#  url = "coding/python/"
-  url = "category/python/"
+  url = "coding/python/"
   weight = 310
   parent = "coding"
 
 [[main]]
   name = "Java"
-#  url = "coding/java/"
-  url = "category/java/"
+  url = "coding/java/"
   weight = 320
   parent = "coding"
 
 [[main]]
   name = "Go"
-#  url = "coding/go/"
-  url = "category/go/"
+  url = "coding/go/"
   weight = 330
   parent = "coding"
 
 [[main]]
   name = "JavaScript"
-#  url = "coding/javascript/"
-  url = "category/javascript/"
+  url = "coding/javascript/"
   weight = 340
   parent = "coding"
 
@@ -64,17 +60,17 @@
 
 [[main]]
   name = "Linux"
-  url = "category/linux/"
+  url = "linux/"
   weight = 400
 
 [[main]]
   name = "DevOps"
-  url = "category/devops/"
+  url = "devops/"
   weight = 500
 
 [[main]]
   name = "Networking"
-  url = "category/networking/"
+  url = "networking/"
   weight = 600
 
 [[main]]
