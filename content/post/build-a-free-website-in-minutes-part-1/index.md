@@ -44,6 +44,7 @@ This is the [Part-1](https://flycoolman.com/post/build-a-free-website-in-minutes
 ## Prerequisites
 
 Before contiduing this tutorial, you should have the basic knowledge of the following items:  
+
 - Git
 - GitHub
 - HTTP
@@ -73,9 +74,11 @@ Before contiduing this tutorial, you should have the basic knowledge of the foll
 From the brief introduction above, you have known what the tools are. Basically we will use Hugo to generate the website, personalize it with Academic, and deploy it to GitHub Pages. Now let's put hands on it. We will start from 'Hello World'.
 
 ### Hello World of GitHub Pages
+
 Please follow the [GitHub Pages Hello World Guide](https://pages.github.com/).
 
 ### Hello World of Hugo
+
 Hugo official site has [a quick start on macOS](https://gohugo.io/getting-started/quick-start/). But it may not install the latest version of Hugo, like on Ubuntu 18.04, the Hugo version is quite old if installing by **apt**. I will introduce the steps on Ubuntu 18.04 here.
 
 #### Step 1 - Install
@@ -152,12 +155,10 @@ To check the result
 
     hugo server
 
-Now you get the 'Hello World' page. 
+Now you get the 'Hello World' page.  
 ![hugo-hello-world](./hugo-hello-world.png)  
 
-
 <br>
-
 
 To customize the website, we will discuss Hugo theme and Academic in [Part-2](https://flycoolman.com/post/build-a-free-website-in-minutes-part-2/).  
 
