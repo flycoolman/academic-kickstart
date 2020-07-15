@@ -1,5 +1,5 @@
 ---
-title: 'Build A Free Website In Minutes - Part 2'
+title: 'Build A Free Website In Minutes - Part 3'
 # subtitle: 'Create a beautifully simple website in under 10 minutes :rocket:'
 summary: Learn how to create a static website by Hugo, GitHub Pages and Academic.
 authors:
@@ -13,7 +13,7 @@ tags:
 categories:
 - Basic
 - Web Development
-date: "2020-07-14T00:00:00Z"
+date: "2020-07-15T00:00:00Z"
 lastmod: "2020-07-15T00:00:00Z"
 featured: false
 draft: false
@@ -35,114 +35,136 @@ image:
 #   Otherwise, set `projects = []`.
 projects: []
 ---
+In [Part-1](https://flycoolman.com/post/build-a-free-website-in-minutes-part-1/) and [Part-2](https://flycoolman.com/post/build-a-free-website-in-minutes-part-2/)
+ we introduced the basic knowledges of the tools to help understand how they work. From this part, we will focus on building our real website.
 
-To learn more about prerequisites and tools, please check out the [Part-1](https://flycoolman.com/post/build-a-free-website-in-minutes-part-1/) of this series.
+## Prerequisites
 
-## Hugo Theme
-
-### Step 1 - Create a new site  
-
-    hugo new site hello-theme
-
-### Step 2 - Download the ananke theme  
-
-    wget https://github.com/budparr/gohugo-theme-ananke/archive/master.zip
-
-### Step 3 - Extract that .zip file to get a “gohugo-theme-ananke-master” directory  
-
-    unzip master.zip
-
-### Step 4 - Rename that directory to “ananke”, and move it into the “themes/” directory  
-
-    mv gohugo-theme-ananke-master/ ananke/
-    mv ananke/ themes/ananke
-
-### Step 5 - Add the theme to the site configuration  
-
-    echo 'theme = "ananke"' >> config.toml
-
-### Step 6 - Add some content and change the header of the post to say draft: false  
-
-    hugo new posts/hello-hugo-theme-post.md
-    vi content/posts/hello-hugo-theme-post.md
-
-### Step 7 - Check the result  
-
-    hugo server
-
-![hello-hugo-theme](./hello-hugo-theme.png)  
+- [Download and install Git](https://www.digitalocean.com/community/tutorials/how-to-install-git-on-ubuntu-18-04-quickstart)
+- Download and install Hugo Extended Version  
+Please follow the part of 'Install Hugo Extended Version' in [Part-2](https://flycoolman.com/post/build-a-free-website-in-minutes-part-2/) of this tutorial.
 
 <br>
 
-## Hugo Uninstall
+## GitHub Repositories
 
-**Use the below command to remove the package of Hugo**
+### GitHub Pages Repository
 
-    sudo apt-get remove --auto-remove hugo
+Please follow the guide on [GitHub Pages](https://pages.github.com/) to create the repository correctly.
 
->Reading package lists... Done  
->Building dependency tree  
->Reading state information... Done  
->The following packages will be REMOVED:  
->&nbsp; &nbsp;hugo  
->0 upgraded, 0 newly installed, 1 to remove and 0 not upgraded.  
->After this operation, 44.5 MB disk space will be freed.  
->Do you want to continue? [Y/n] y  
->(Reading database ... 252044 files and directories currently installed.)  
->Removing hugo (0.73.0) ...  
->dpkg: warning: while removing hugo, directory '/usr/local/bin' not empty so not removed
+### Academic-kickstart Repository
 
-{{% alert note %}}
-As Academic requires Hugo extended version, that's the reason that the standard version is uninstalled.
-{{% /alert %}}
+Go to the GitHub page of [academic-kickstart](https://github.com/sourcethemes/academic-kickstart) and fork the repository to your GitHub account. The pictures below show the source of academic-kickstart page and the forked repository in my account.  
+
+Academic-kickstart source page
+![before-forked](./fork-academic-kickstart.png)  
+
+The forked repository in my account
+![after-forked](./forked-academic-kickstart.png)  
 
 <br>
 
-## Hello Academic
+## Local Environment
 
-{{% alert note %}}
-Academic is a site builder, it is a hugo site itself.
-{{% /alert %}}
+### Step 1 - git clone &lt;username&gt;.github.io to local  
 
-### Install Hugo Extended Version
+    git clone https://github.com/your-user-name/your-user-name.github.io.git
 
-    wget https://github.com/gohugoio/hugo/releases/download/v0.73.0/hugo_extended_0.73.0_Linux-64bit.deb
-    sudo dpkg -i hugo_extended_0.73.0_Linux-64bit.deb 
-    hugo version
+### Step 2 - git clone academic-kickstart to local  
 
-The output below shows the information of Hugo extended version.
+    git clone https://github.com/your-user-name/academic-kickstart.git
 
->Hugo Static Site Generator v0.73.0-428907CC/extended linux/amd64 BuildDate: 2020-06-23T16:40:09Z
+### Step 3 - Initialize the theme  
 
-### Install Academic
+    cd academic-kickstart/
+    git submodule update --init --recursive
 
-[This linke](https://sourcethemes.com/academic/docs/install-locally/) provides the different ways to install Academic.
-In this part, the [Install with ZIP](https://sourcethemes.com/academic/docs/install-locally/#install-with-zip) way is used.
+### Step 4 - Set base url in config.toml  
 
-#### Step 1 - Download and extract Academic Kickstart  
+In your config.toml file, set baseurl = "https://&lt;USERNAME&gt;.github.io/", where &lt;USERNAME&gt; is your Github username. Stop Hugo if it’s running and delete the public directory if it exists (by typing **rm -r public/**).  
 
-    wget https://github.com/sourcethemes/academic-kickstart/archive/master.zip
-    unzip master.zip
-    rm master.zip
+    vi config.toml
 
-#### Step 2 - Download and extract the Academic theme files from the hugo-academic-master folder to the themes/academic/ folder in Academic Kickstart  
+The example for my site
+![after-forked](./base-url-in-config-toml.png)  
 
-wget https://github.com/gcushen/hugo-academic/archive/master.zip
-unzip master.zip
-rm master.zip
+### Step 5 - Add .github.io repository into Academic-kickstart
 
-#### Step 3 - Copy the hugo-academic-master folder to the themes/academic/ folder in Academic Kickstart  
+Add .github.io repository as a submodule in a folder named 'public', replacing with your Github username.
 
-    cp -r hugo-academic-master/* academic-kickstart-master/themes/academic/
+    cd academic-kickstart/
+    git submodule add -f -b master https://github.com/your-user-name/your-user-name.github.io.git public
 
-#### Step 4 - Check the result  
+### Step 6 - Remove initial index file
 
-    cd academic-kickstart-master/
-    hugo server
+Delete the 'index.html' file in the folder of 'public', if there is one.  
 
-![hello-academic](./hello-academic.png)
+    cd public  
+    rm index.html
 
-In next part, we will install everything in GitHub.
+### Step 7 - Build your website
+
+    cd academic-kickstart/
+    hugo
+
+### Step 8 - Deploy to GitHub
+
+Add everything to your local git repository and push it up to your remote repository on GitHub.
+
+    cd academic-kickstart/
+    cd public
+    git add .
+    git comment -m "Initial commit"
+    git push
+
+    cd academic-kickstart/
+    git add .
+    git comment -m "Initial commit"
+    git push    
+
+Whilst running the above commands you may be prompted for your GitHub username and password.
+
+Once uploading is finished, access https://&lt;USERNAME&gt;.github.io in your browser, substituting with your GitHub username.
+You will see a page like below:
+
+![hello-academic](./hello-academic.png)  
+
+<br>
+
+## Build Academic Demo Like Site
+
+To initialise your site with the demo content, copy the contents of the themes/academic/exampleSite/ folder to your website root folder, overwriting existing files if necessary. The exampleSite folder contains an example config file and content to help you get started.
+
+### Step 1 - Replace the content  
+
+    cd academic-kickstart/
+    cp -av themes/academic/exampleSite/* .
+
+### Step 2 - Build the site  
+
+    cd academic-kickstart/
+    hugo
+
+### Step 3 - Deploy to GitHub  
+
+    cd academic-kickstart/
+    cd public
+    git add .
+    git comment -m "Initial commit"
+    git push
+
+    cd academic-kickstart/
+    git add .
+    git comment -m "Initial commit"
+    git push
+
+Once uploading is finished, refresh the page in your browser, the page shows like below picture.
+
+![academic-demo-site](./academic-demo-site.png)
+
+<br>
+
+Up to now, we have an Academic demo-like website up and running. In next part, we will personalize the website.
 
 <br>
 

@@ -51,6 +51,10 @@ Before contiduing this tutorial, you should have the basic knowledge of the foll
 - HTTPS
 - DNS
 
+{{% alert note %}}
+If you are familiar with these and just want to build your website quickly, you can jump to [Part-3](https://flycoolman.com/post/build-a-free-website-in-minutes-part-3/).
+{{% /alert %}}
+
 <br>
 
 ## Tools
