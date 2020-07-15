@@ -14,7 +14,7 @@ categories:
 - Basic
 - Web Development
 date: "2020-07-14T00:00:00Z"
-lastmod: "2020-07-14T00:00:00Z"
+lastmod: "2020-07-15T00:00:00Z"
 featured: false
 draft: false
 
@@ -114,35 +114,35 @@ The output below shows the information of Hugo extended version.
 
 >Hugo Static Site Generator v0.73.0-428907CC/extended linux/amd64 BuildDate: 2020-06-23T16:40:09Z
 
-### 
+### Install Academic
 
-https://sourcethemes.com/academic/docs/install-locally/#install-with-zip
+[This linke](https://sourcethemes.com/academic/docs/install-locally/) provides the different ways to install Academic.
+In this part, the [Install with ZIP](https://sourcethemes.com/academic/docs/install-locally/#install-with-zip) way is used.
 
-Install:
+#### Step 1 - Download and extract Academic Kickstart  
 
-Download and extract Academic Kickstart
+    wget https://github.com/sourcethemes/academic-kickstart/archive/master.zip
+    unzip master.zip
+    rm master.zip
 
-wget https://github.com/sourcethemes/academic-kickstart/archive/master.zip
-unzip master.zip
-rm master.zip
-
-Download and extract the Academic theme files from the hugo-academic-master folder to the themes/academic/ folder in Academic Kickstart
+#### Step 2 - Download and extract the Academic theme files from the hugo-academic-master folder to the themes/academic/ folder in Academic Kickstart  
 
 wget https://github.com/gcushen/hugo-academic/archive/master.zip
 unzip master.zip
 rm master.zip
-cp -r hugo-academic-master/* academic-kickstart-master/themes/academic/
 
-cd academic-kickstart-master/
- hugo server
+#### Step 3 - Copy the hugo-academic-master folder to the themes/academic/ folder in Academic Kickstart  
+
+    cp -r hugo-academic-master/* academic-kickstart-master/themes/academic/
+
+#### Step 4 - Check the result  
+
+    cd academic-kickstart-master/
+    hugo server
 
 ![hello-academic](./hello-academic.png)
 
-Now you’re ready to personalize and view your site.
-
-
-
-**This part has not been finished. Please stay tuned!**
+In next part, we will install everything in GitHub.
 
 <br>
 
