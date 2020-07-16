@@ -140,8 +140,6 @@ We are all set! Enjoy writing!
 <https://www.markdownguide.org/basic-syntax/>
 <https://simplpost.com/markdown.html>
 
-<https://mscipio.github.io/post/utterances-comment-engine/>
-
 <br>
 
 #### Did you find this page helpful? Consider sharing it 🙌
