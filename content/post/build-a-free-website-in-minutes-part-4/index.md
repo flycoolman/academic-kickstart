@@ -137,6 +137,7 @@ We are all set! Enjoy writing!
 
 #### How-To Markdown
 
+<https://guides.github.com/features/mastering-markdown/>
 <https://www.markdownguide.org/basic-syntax/>
 <https://simplpost.com/markdown.html>
 
