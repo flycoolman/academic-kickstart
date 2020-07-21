@@ -124,7 +124,7 @@ Go to the folder 'site_root/content/post/', select one post as template, write y
 
 <br>
 
-We are all set! Enjoy writing!
+All set! Enjoy writing!
 
 <br>
 
@@ -140,6 +140,10 @@ We are all set! Enjoy writing!
 <https://guides.github.com/features/mastering-markdown/>
 <https://www.markdownguide.org/basic-syntax/>
 <https://simplpost.com/markdown.html>
+
+#### Add Utterances Comment Engine
+
+<https://mscipio.github.io/post/utterances-comment-engine/>
 
 <br>
 
