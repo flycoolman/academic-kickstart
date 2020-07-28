@@ -12,7 +12,7 @@ categories:
 - Python
 - Linux
 date: "2020-07-27T00:00:00Z"
-lastmod: "2020-07-27T00:00:00Z"
+lastmod: "2020-07-27T22:40:00Z"
 featured: false
 draft: false
 
@@ -42,7 +42,7 @@ projects: []
 
 {{% alert note %}}
 The version numbers are just for my environment.  
-The original log is attached at the end of this document.
+Find the original log of my setup [**here**](./ietf_datatracker_env_setup.txt).
 {{% /alert %}}
 
 ### Overview
