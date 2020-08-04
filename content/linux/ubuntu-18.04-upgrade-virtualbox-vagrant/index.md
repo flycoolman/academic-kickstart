@@ -13,7 +13,7 @@ categories:
 - Linux
 - System
 date: "2020-07-23T00:00:00Z"
-lastmod: "2020-07-23T00:00:00Z"
+lastmod: "2020-08-04T00:00:00Z"
 featured: false
 draft: false
 
@@ -42,7 +42,7 @@ CentOS 8 experience. And also I wanted the environment with GUI, so that I dould
 
 ### Why to upgrade VirtualBox and Vagrant
 
-I had VirtualBox and Vagrant on my machine(Ubuntu 18.04). So it was straight forward to boot up CentOS 8 by changing the Vagrant file.
+I had VirtualBox and Vagrant on my machine(Ubuntu 18.04). So it was straight forward to boot up CentOS 8 by changing the Vagrantfile.
 
 >\# -\*- mode: ruby -\*-  
 >\# vi: set ft=ruby :  
@@ -58,6 +58,10 @@ I had VirtualBox and Vagrant on my machine(Ubuntu 18.04). So it was straight for
 >  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vb.cpus = 4  
 >  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end  
 >end  
+
+{{% alert note %}}
+[Vagrantfile](./Vagrantfile)
+{{% /alert %}}
 
 After  
 >Vagrant up
