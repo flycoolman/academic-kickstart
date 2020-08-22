@@ -14,7 +14,7 @@ categories:
 - Basic
 - Web Development
 date: "2020-08-04T00:00:00Z"
-lastmod: "2020-08-04T00:00:00Z"
+lastmod: "2020-08-22T00:00:00Z"
 featured: false
 draft: false
 
@@ -75,7 +75,12 @@ The website has been up and running for a while. Today I want to update a docume
 
     blahblahblah...
 
-### Step 7: Add, Commit and Push as before
+### Step 7: Build the website
+
+    cd academic-kickstart/
+    hugo
+
+### Step 8: Add, Commit and Push as before
 
     cd public
     git add .
