@@ -6,11 +6,10 @@ authors:
 - admin
 tags:
 - Java
-- Spring
 categories:
 - Java
 date: "2020-07-27T00:00:00Z"
-lastmod: "2020-08-21T00:00:00Z"
+lastmod: "2020-08-22T00:00:00Z"
 featured: false
 draft: false
 
@@ -45,9 +44,9 @@ JavaBeans are classes that encapsulate many objects into a single object. They a
 - getter and setter
 {{% /alert %}}
 
-A bean is a Java class with method names that follow the JavaBeans guidelines. A bean builder tool uses introspection to examine the bean class. Based on this inspection, the bean builder tool can figure out the bean's properties, methods, and events.
-Almost any code can be packaged as a bean.  
-The power of JavaBeans is that you can use software components without having to write them or understand their implementation.
+A bean is a Java class with method names that follow the JavaBeans guidelines. A bean builder tool uses introspection to examine the bean class. Based on this inspection, the bean builder tool can figure out the bean's properties, methods, and events.  
+Almost any code can be packaged as a bean.   
+The power of JavaBeans is that you can use software components without having to write them or understand their implementation.  
 
 ### Java Beans Example
 
@@ -81,11 +80,11 @@ The power of JavaBeans is that you can use software components without having to
 - Boolean property using is instead of get
 {{% /alert %}}
 
-- Indexed Properties
+- Indexed Properties  
 an array instead of a single value
-- Bound Properties
+- Bound Properties  
 PropertyChangeListeners
-- Constrained Properties
+- Constrained Properties  
 VetoableChangeListeners
 
 ### Bean Methods
@@ -135,15 +134,10 @@ Controlling Serialization:
 Long-term persistence is a model that enables beans to be saved in XML format.
 
 ### Links
-[JavaBeans](https://en.wikipedia.org/wiki/JavaBeans)
-[Oracle's JavaBeans tutorials](http://download.oracle.com/javase/tutorial/javabeans/)
-[JavaBeans specification](http://www.oracle.com/technetwork/java/javase/documentation/spec-136004.html)
+[JavaBeans](https://en.wikipedia.org/wiki/JavaBeans)  
+[Oracle's JavaBeans tutorials](http://download.oracle.com/javase/tutorial/javabeans/)  
+[JavaBeans specification](http://www.oracle.com/technetwork/java/javase/documentation/spec-136004.html)  
 [初识Spring —— Bean的装配（一）](https://juejin.im/post/6844903618567471112)  
-[初识Spring —— Bean的装配（二）](https://juejin.im/post/6844903619834150919)  
-[What in the world are Spring beans?](https://stackoverflow.com/questions/17193365/what-in-the-world-are-spring-beans)  
-[Spring注入Bean的几种方式](https://juejin.im/post/6844903813753602056)  
-[Spring – Inversion of Control vs Dependency Injection](https://howtodoinjava.com/spring-core/spring-ioc-vs-di/)  
-
 
 <br>
 
