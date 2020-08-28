@@ -343,10 +343,20 @@ In object-oriented programming languages without function-valued arguments, such
 ### Spring Bean Instantiation
 
 - Instantiation with a constructor
+
+        <bean id="exampleBean"/>
+
 - Instantiation with a static factory method
+
+        <bean id="exampleBean" factory-method="createInstance"/>
+
 - Instantiation using an instance factory method
 
-See [Instantiating beans](https://docs.spring.io/spring/docs/4.2.x/spring-framework-reference/html/beans.html#beans-factory-class)  
+        <bean id="myFactoryBean"  class="...">
+         
+        <bean id="exampleBean"  factory-bean="myFactoryBean" factory-method="createInstance"></bean>
+
+For more details, go to the link [Instantiating beans](https://docs.spring.io/spring/docs/4.2.x/spring-framework-reference/html/beans.html#beans-factory-class).  
 
 ### Spring Bean Configuration/Container Configuration
 

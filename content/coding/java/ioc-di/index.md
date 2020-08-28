@@ -1,5 +1,5 @@
 ---
-title: 'Inversion of Control vs. Dependency Injection'
+title: 'Inversion of Control and Dependency Injection'
 # subtitle: 'Create a beautifully simple website in under 10 minutes :rocket:'
 summary: A summary of Spring Inversion of Control and Dependency Injection.
 authors:
@@ -7,10 +7,12 @@ authors:
 tags:
 - Java
 - Spring
+- IoC
+- DI
 categories:
 - Java
-date: "2020-07-27T00:00:00Z"
-lastmod: "2020-08-21T00:00:00Z"
+date: "2020-07-30T00:00:00Z"
+lastmod: "2020-08-29T00:00:00Z"
 featured: false
 draft: true
 
@@ -46,8 +48,32 @@ A process in which an object defines its dependencies without creating them.
 
 The Spring IoC Container is the leading dependency injection framework. 
 
-This chapter covers the Spring Framework implementation of the Inversion of Control (IoC) [1] principle. IoC is also known as dependency injection (DI). It is a process whereby objects define their dependencies, that is, the other objects they work with, only through constructor arguments, arguments to a factory method, or properties that are set on the object instance after it is constructed or returned from a factory method. The container then injects those dependencies when it creates the bean. This process is fundamentally the inverse, hence the name Inversion of Control (IoC), of the bean itself controlling the instantiation or location of its dependencies by using direct construction of classes, or a mechanism such as the Service Locator pattern.
-https://docs.spring.io/spring/docs/4.2.x/spring-framework-reference/html/beans.html#beans-definition
+This chapter covers the Spring Framework implementation of the Inversion of Control (IoC) principle. IoC is also known as dependency injection (DI). It is a process whereby objects define their dependencies (that is, the other objects they work with) only through constructor arguments, arguments to a factory method, or properties that are set on the object instance after it is constructed or returned from a factory method. The container then injects those dependencies when it creates the bean. This process is fundamentally the inverse (hence the name, Inversion of Control) of the bean itself controlling the instantiation or location of its dependencies by using direct construction of classes or a mechanism such as the Service Locator pattern.
+
+
+
+
+<br>
+
+{{% alert note %}}
+- Representation - org.springframework.context.ApplicationContext
+- Responsibilities - instantiating, configuring, and assembling Beans
+- Tool: configuration metadata
+
+{{% /alert %}}
+
+<br>
+
+The interface org.springframework.context.ApplicationContext represents the Spring IoC container and is responsible for instantiating, configuring, and assembling the aforementioned beans. The container gets its instructions on what objects to instantiate, configure, and assemble by reading configuration metadata. 
+
+
+The main control of the program was inverted, moved away from you to the framework.
+
+
+As a result I think we need a more specific name for this pattern. Inversion of Control is too generic a term, and thus people find it confusing. As a result with a lot of discussion with various IoC advocates we settled on the name Dependency Injection.
+
+
+
 
 
 #### Dependency Injection (DI)
@@ -63,29 +89,12 @@ Objects can be obtained by means of either dependency lookup or dependency injec
 
 
 
+I'm going to start by talking about the various forms of dependency injection, but I'll point out now that that's not the only way of removing the dependency from the application class to the plugin implementation. The other pattern you can use to do this is Service Locator, and I'll discuss that after I'm done with explaining Dependency Injection.
 
 
+The Styles of DI
 
-使用Bean类
-
-public class UserBeanTest {
-    public static void main(String[] args){
-        //实例化
-        UserBean userBean = new UserBean();
-        userBean.setPlay("I want to play");
-        userBean.setUser(true);
-
-        //如果是用户，就打印语句
-        if(userBean.isUser()){
-            System.out.println(userBean.getPlay());
-        }
-    }
-}
-
-作者：胖若俩人
-链接：https://juejin.im/post/6844903618567471112
-来源：掘金
-著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+If you use Dependency Injection there are a number of styles to choose between. I would suggest you follow constructor injection unless you run into one of the specific problems with that approach, in which case switch to setter injection.
 
 
 ### Step 2: Install GUI on the VM
@@ -229,12 +238,8 @@ Go to [the original page](https://trac.tools.ietf.org/tools/ietfdb/wiki/SprintCo
 For other workflow things, please refer to [the original setup guide.](https://trac.tools.ietf.org/tools/ietfdb/wiki/SprintCoderSetup)
 
 ### Links
-[JavaBeans on Wikipedia](https://en.wikipedia.org/wiki/JavaBeans)
-[Oracle's JavaBeans tutorials](http://download.oracle.com/javase/tutorial/javabeans/)
-[JavaBeans specification](http://www.oracle.com/technetwork/java/javase/documentation/spec-136004.html)
-[初识Spring —— Bean的装配（一）](https://juejin.im/post/6844903618567471112)  
+[The IoC Container](https://docs.spring.io/spring/docs/current/spring-framework-reference/core.html#beans-introduction)  
 [Inversion of Control Containers and the Dependency Injection pattern](https://martinfowler.com/articles/injection.html)  
-[What in the world are Spring beans?](https://stackoverflow.com/questions/17193365/what-in-the-world-are-spring-beans)  
 [Spring Framework](https://en.wikipedia.org/wiki/Spring_Framework#Inversion_of_control_container_.28dependency_injection.29)  
 [What is Dependency Injection and Inversion of Control in Spring Framework?](https://stackoverflow.com/questions/9403155/what-is-dependency-injection-and-inversion-of-control-in-spring-framework)  
 [Spring – Inversion of Control vs Dependency Injection](https://howtodoinjava.com/spring-core/spring-ioc-vs-di/)  

@@ -118,7 +118,7 @@ https://docs.spring.io/spring-javaconfig/docs/1.0.0.m3/reference/html/overview.h
 [What in the world are Spring beans?](https://stackoverflow.com/questions/17193365/what-in-the-world-are-spring-beans)  
 [Spring注入Bean的几种方式](https://juejin.im/post/6844903813753602056)  
 [Java-based vs annotation-based configuration/autowiring](https://stackoverflow.com/questions/41615041/java-based-vs-annotation-based-configuration-autowiring)  
-
+[Java-based vs annotation-based configuration/autowiring - spring](https://html.developreference.com/article/14966783/Java-based+vs+annotation-based+configuration+autowiring)  
 
 <br>
 
