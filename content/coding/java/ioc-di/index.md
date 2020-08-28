@@ -44,6 +44,12 @@ A process in which an object defines its dependencies without creating them.
 {{% /alert %}}
 
 
+The Spring IoC Container is the leading dependency injection framework. 
+
+This chapter covers the Spring Framework implementation of the Inversion of Control (IoC) [1] principle. IoC is also known as dependency injection (DI). It is a process whereby objects define their dependencies, that is, the other objects they work with, only through constructor arguments, arguments to a factory method, or properties that are set on the object instance after it is constructed or returned from a factory method. The container then injects those dependencies when it creates the bean. This process is fundamentally the inverse, hence the name Inversion of Control (IoC), of the bean itself controlling the instantiation or location of its dependencies by using direct construction of classes, or a mechanism such as the Service Locator pattern.
+https://docs.spring.io/spring/docs/4.2.x/spring-framework-reference/html/beans.html#beans-definition
+
+
 #### Dependency Injection (DI)
 
 Objects can be obtained by means of either dependency lookup or dependency injection. Dependency lookup is a pattern where a caller asks the container object for an object with a specific name or of a specific type. Dependency injection is a pattern where the container passes objects by name to other objects, via either constructors, properties, or factory methods.
@@ -54,15 +60,9 @@ But in Spring, since it is a framework or Container who does that job of injecti
 
 Objects can be obtained by means of either dependency lookup or dependency injection. Dependency lookup is a pattern where a caller asks the container object for an object with a specific name or of a specific type. Dependency injection is a pattern where the container passes objects by name to other objects, via either constructors, properties, or factory methods.
 
-**Software Components**  
 
-JavaBeans are classes that encapsulate many objects into a single object. They are serializable, have a zero-argument constructor, and allow access to properties using getter and setter methods. 
 
-{{% alert note %}}
-- serializable
-- zero-argument constructor
-- getter and setter
-{{% /alert %}}
+
 
 
 
