@@ -11,6 +11,7 @@ tags:
 - DI
 categories:
 - Java
+- Spring
 date: "2020-08-01T00:00:00Z"
 lastmod: "2020-08-30T00:00:00Z"
 featured: false
@@ -41,12 +42,12 @@ So the core problem is how to assemble the plugins into an application. Then fra
 
 #### Inversion of Control (IoC) vs. Traditional Control
 
-- Traditional Control
+- Traditional Control  
   In traditional programming, the custom code that expresses the purpose of the program calls into reusable libraries to take care of generic tasks.  
   I.e.   
   the custom object instantiates its dependent objects, then uses the objects.
 
-- Inversion of Control (IoC)
+- Inversion of Control (IoC)  
   IoC inverts the flow of control as compared to traditional control flow. In IoC, custom-written portions of a computer program receive the flow of control from a generic framework.
   Usually it is the framework that calls into the custom, or task-specific, code.  
   I.e.  
@@ -91,11 +92,24 @@ The interface **org.springframework.context.ApplicationContext** represents the 
 
 #### Types of IoC Containers
 
+The **org.springframework.beans** and **org.springframework.context** packages provide the basis for the Spring Framework’s IoC container.  
+The **BeanFactory interface** provides an advanced configuration mechanism capable of managing objects of any nature.  
+The **ApplicationContext interface** builds on top of the BeanFactory (it is a sub-interface) and adds other functionality such as easier integration with Spring’s AOP features, message resource handling (for use in internationalization), event propagation, and application-layer specific contexts such as the WebApplicationContext for use in web applications.  
+
 - BeanFactory container
-- ApplicationContext container
+    * The BeanFactory is the actual representation of the Spring IoC container that is responsible for containing and otherwise managing the aforementioned beans. 
+    * The BeanFactory interface is the central IoC container interface in Spring. The BeanFactory API provides the underlying basis for Spring’s IoC functionality. 
+    * Its specific contracts are mostly used in integration with other parts of Spring and related third-party frameworks.
+
+- ApplicationContext container  
+  Because an ApplicationContext includes all the functionality of a BeanFactory, it is generally recommended over a plain BeanFactory, except for scenarios where full control over bean processing is needed.
+
+{{% alert note %}}
+- In short, the BeanFactory provides the configuration framework and basic functionality, and the ApplicationContext adds more enterprise-specific functionality. The ApplicationContext is a complete superset of the BeanFactory.  
+- You should use an ApplicationContext unless you have a good reason for not doing so, with GenericApplicationContext and its subclass AnnotationConfigApplicationContext as the common implementations for custom bootstrapping.
+{{% /alert %}}
 
 <br>
-
 
 ### Dependency Injection (DI)
 
@@ -118,7 +132,7 @@ Objects can be obtained by means of either dependency lookup or dependency injec
 #### The Styles of DI
 
 Dependency Injection can be done by:  
-- Constructor-based dependency injection
+- Constructor-based dependency injection  
   Constructor-based DI is accomplished by the container invoking a constructor with a number of arguments, each representing a dependency.
 
         public class SimpleMovieLister {
@@ -134,7 +148,7 @@ Dependency Injection can be done by:
             // business logic that actually uses the injected MovieFinder is omitted...
         }
 
-- Setter-based dependency injection
+- Setter-based dependency injection  
   Setter-based DI is accomplished by the container calling setter methods on your beans after invoking a no-argument constructor or a no-argument static factory method to instantiate your bean.
 
         public class SimpleMovieLister {
@@ -159,7 +173,6 @@ Dependency Injection can be done by:
 - Constructor injection lets you implement application components as immutable objects and ensures that required dependencies are not null. Furthermore, constructor-injected components are always returned to the client (calling) code in a fully initialized state. 
 - Setter injection should primarily only be used for optional dependencies that can be assigned reasonable default values within the class. Otherwise, not-null checks must be performed everywhere the code uses the dependency. One benefit of setter injection is that setter methods make objects of that class amenable to reconfiguration or re-injection later.
 
-
 {{% alert note %}}
 Use the DI style that makes the most sense for a particular class.
 {{% /alert %}}
@@ -167,27 +180,22 @@ Use the DI style that makes the most sense for a particular class.
 
 ### IoC vs. DI
 
-- Interchangable
+- Interchangable  
   IoC and DI are used interchangeably.
-- Process and Result
+- Process and Result  
   IoC is achieved through DI. DI is the process of providing the dependencies and IoC is the end result of DI.
-- One to Many
+- One to Many  
   DI is a specific type of IoC and is not the only way to achieve IoC. There are other ways as well, such as:
     * Service Locator pattern
     * Template method design pattern
     * Strategy design pattern
 
-By DI, the responsibility of creating objects is shifted from our application code to the Spring container; this phenomenon is called IoC.
-
-DI is not the only way of removing the dependency from the application class to the plugin implementation. The other pattern you can use to do this is Service Locator, and I'll discuss that after I'm done with explaining Dependency Injection.
-
-
 {{% alert note %}}
-IoC basically facilitates having different components designed and coded separately and later used together by defining their relation with DI.
+- IoC basically facilitates having different components designed and coded separately and later used together by defining their relation with DI.  
+- By DI, the responsibility of creating objects is shifted from our application code to the Spring container; this phenomenon is called IoC.
 {{% /alert %}}
 
-
-
+<br>
 
 ### Links
 [The IoC Container](https://docs.spring.io/spring/docs/current/spring-framework-reference/core.html#beans-introduction)  
@@ -198,6 +206,10 @@ IoC basically facilitates having different components designed and coded separat
 [Spring – IoC Containers](https://howtodoinjava.com/spring-core/different-spring-ioc-containers/)  
 [Inversion of control](https://en.wikipedia.org/wiki/Inversion_of_control#Implementation_techniques)  
 [What is Dependency Injection and Inversion of Control in Spring Framework?](https://stackoverflow.com/questions/9403155/what-is-dependency-injection-and-inversion-of-control-in-spring-framework)  
+[Interface BeanFactory](https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/beans/factory/BeanFactory.html)  
+[Interface ApplicationContext](https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/context/ApplicationContext.html)  
+[The BeanFactory](https://docs.spring.io/spring/docs/current/spring-framework-reference/core.html#beans-beanfactory)  
+
 
 
 <br>
