@@ -13,7 +13,7 @@ categories:
 - Shardingsphere
 - Database
 date: "2020-08-01T00:00:00Z"
-lastmod: "2020-08-30T00:00:00Z"
+lastmod: "2020-09-06T00:00:00Z"
 featured: false
 draft: true
 
@@ -169,78 +169,57 @@ The Spring IoC Container is the leading dependency injection framework.
 {{% /alert %}}
 
 
-#### Dependency Lookup vs. Dependency Injection
+#### Import the Project
+Follow the steps below to import the project.  
 
-Objects can be obtained by means of either dependency lookup or dependency injection.  
-- Dependency lookup is a pattern where a caller asks the container object for an object with a specific name or of a specific type. 
-- Dependency injection is a pattern where the container passes objects by name to other objects, via either constructors, properties, or factory methods.
-
-
-#### The Styles of DI
-
-Dependency Injection can be done by:  
-- Constructor-based dependency injection  
-  Constructor-based DI is accomplished by the container invoking a constructor with a number of arguments, each representing a dependency.
-
-        public class SimpleMovieLister {
-
-            // the SimpleMovieLister has a dependency on a MovieFinder
-            private MovieFinder movieFinder;
-
-            // a constructor so that the Spring container can inject a MovieFinder
-            public SimpleMovieLister(MovieFinder movieFinder) {
-                this.movieFinder = movieFinder;
-            }
-
-            // business logic that actually uses the injected MovieFinder is omitted...
-        }
-
-- Setter-based dependency injection  
-  Setter-based DI is accomplished by the container calling setter methods on your beans after invoking a no-argument constructor or a no-argument static factory method to instantiate your bean.
-
-        public class SimpleMovieLister {
-
-            // the SimpleMovieLister has a dependency on the MovieFinder
-            private MovieFinder movieFinder;
-
-            // a setter method so that the Spring container can inject a MovieFinder
-            public void setMovieFinder(MovieFinder movieFinder) {
-                this.movieFinder = movieFinder;
-            }
-
-            // business logic that actually uses the injected MovieFinder is omitted...
-        }
-
-#### Constructor-based or Setter-based DI
-
-- Constructor-based and setter-based DI can be mixed
-- Constructors for mandatory dependencies and setter methods or configuration methods for optional dependencies
-
-**Why**
-- Constructor injection lets you implement application components as immutable objects and ensures that required dependencies are not null. Furthermore, constructor-injected components are always returned to the client (calling) code in a fully initialized state. 
-- Setter injection should primarily only be used for optional dependencies that can be assigned reasonable default values within the class. Otherwise, not-null checks must be performed everywhere the code uses the dependency. One benefit of setter injection is that setter methods make objects of that class amenable to reconfiguration or re-injection later.
+Import projects... or File ---> Import...
+![import-projects](./import-projects.png)  
+![existing-maven-projects](./existing-maven-projects.png)  
+![select-all-pom-files](./select-all-pom-files.png)  
 
 {{% alert note %}}
-Use the DI style that makes the most sense for a particular class.
+The **warning** shown below can be ignored.
+maven-remote-resources-plugin (goal "process") is ignored by m2e.
 {{% /alert %}}
 
 
-### IoC vs. DI
+#### Build and Test
 
-- Interchangable  
-  IoC and DI are used interchangeably.
-- Process and Result  
-  IoC is achieved through DI. DI is the process of providing the dependencies and IoC is the end result of DI.
-- One to Many  
-  DI is a specific type of IoC and is not the only way to achieve IoC. There are other ways as well, such as:
-    * Service Locator pattern
-    * Template method design pattern
-    * Strategy design pattern
+Build and test as separate steps, i.e.
+
+- Run As ---> Maven clean
+- Run As ---> Maven build
+- Run As ---> Maven test
+- Run As ---> Maven install
+
+![maven-run-as-options](./maven-run-as-options.png)  
+
+Or define the goals at one time, i.e.
+Run As ---> Maven build...  ---> Goals: (clean install)
+![maven-custom-build](./maven-custom-build.png)  
+
 
 {{% alert note %}}
-- IoC basically facilitates having different components designed and coded separately and later used together by defining their relation with DI.  
-- By DI, the responsibility of creating objects is shifted from our application code to the Spring container; this phenomenon is called IoC.
+Specific module can be chosen and do the same build.  
+Maven will build the dependencies automatically.
 {{% /alert %}}
+
+#### Issues and Tricks
+
+- Too many files with unapproved license
+When doing 'install', the below error occurs. No issue with 'build' and 'test', but with 'install'
+
+>[INFO] BUILD FAILURE
+> Too many files with unapproved license
+
+**Solution**  
+Use or check out clean source code, then do 'install'.
+
+- Build failed with 8 threads
+When setting 8 threads for build, the build failed.
+
+**Solution**  
+Set build threads as 1.
 
 <br>
 
