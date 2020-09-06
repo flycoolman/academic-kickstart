@@ -10,6 +10,7 @@ tags:
 - Database
 categories:
 - Java
+- Shardingsphere
 - Database
 date: "2020-08-01T00:00:00Z"
 lastmod: "2020-08-30T00:00:00Z"
@@ -42,8 +43,13 @@ This way could help to rule out any unstable issues of source code and to focus 
 ## Prerequisites
 
 - Linux (Ubuntu 18.04)
-- Source code [4.1.1](https://www.apache.org/dyn/closer.cgi/shardingsphere/4.1.1/apache-shardingsphere-4.1.1-src.zip)  
+- Source code [4.1.1](https://www.apache.org/dyn/closer.cgi/shardingsphere/4.1.1/apache-shardingsphere-4.1.1-src.zip) 
+- Eclipse
+- IntelliJ IDEA 
 
+{{% alert note %}}
+Choose the proper IDE (Eclipse or IntelliJ IDEA), even No IDE 
+{{% /alert %}}
 
 ### Java Development Environment (No IDE)
 
@@ -69,6 +75,8 @@ This way could help to rule out any unstable issues of source code and to focus 
 
 #### Unzip Source Code
 
+- Download [Source Code](https://www.apache.org/dyn/closer.cgi/shardingsphere/4.1.1/apache-shardingsphere-4.1.1-src.zip)
+
 - Unzip the source code
 
         unzip apache-shardingsphere-4.1.1-src.zip
@@ -77,22 +85,25 @@ This way could help to rule out any unstable issues of source code and to focus 
 
         chmod -R 755 apache-shardingsphere-4.1.1-src-release/
 
-
 #### Build and Test
 
-
-[Build Apache ShardingSphere](https://github.com/apache/shardingsphere)  
+Based the Github page [Build Apache ShardingSphere](https://github.com/apache/shardingsphere), there is a script to do the build  
 
     ./mvnw clean install -Prelease
 
+{{% alert note %}}
+Make sure all the tests pass 
+{{% /alert %}}
 
 #### Issues and Tricks
 
+- Multiple Java version installed
 
 
-{{% alert note %}}
-In Spring framework, the IoC Container does that job of injecting dependancies (DI) and not us, The flow of control is reversed, (Framework to Application) it is IoC with DI. 
-{{% /alert %}}
+- Lombok in the project not support Java 11
+
+
+
 
 <br>
 
@@ -140,6 +151,21 @@ lifecycle-mapping-metadata.xml
 Import projects...
 
 File ---> Import...
+
+Build and test as separate steps, i.e.
+
+- Run As ---> Maven clean
+- Run As ---> Maven build
+- Run As ---> Maven test
+
+Or define the goals at one time, i.e.
+Run As ---> Maven build...  ---> Goals: (clean install)
+![maven-build](./maven-build.png)  
+
+
+
+maven-remote-resources-plugin (goal "process") is ignored by m2e.
+
 
 
 
