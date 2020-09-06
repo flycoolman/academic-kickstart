@@ -156,6 +156,14 @@ When doing 'install', the below error occurs. No issue with 'build' and 'test', 
 **Solution**  
 Use or check out clean source code, then do 'install'.
 
+- Build failed with 8 threads
+When setting 8 threads for build, the build failed.
+
+**Solution**  
+Set build threads as 1.
+
+![1-thread](./1-thread.png)
+
 <br>
 
 ### IntelliJ IDEA
@@ -215,11 +223,7 @@ When doing 'install', the below error occurs. No issue with 'build' and 'test', 
 **Solution**  
 Use or check out clean source code, then do 'install'.
 
-- Build failed with 8 threads
-When setting 8 threads for build, the build failed.
 
-**Solution**  
-Set build threads as 1.
 
 <br>
 
