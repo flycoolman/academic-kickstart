@@ -109,70 +109,52 @@ Make sure all the tests pass
 
 ### Eclipse
 
-Central to the Spring Framework is its inversion of control (IoC) container, which provides a consistent means of configuring and managing Java objects using reflection. The container is responsible for managing object lifecycles of specific objects: creating these objects, calling their initialization methods, and configuring these objects by wiring them together.
+#### Import the Project
+Follow the steps below to import the project.  
 
-The interface **org.springframework.context.ApplicationContext** represents the Spring IoC container and is responsible for **instantiating**, **configuring**, and **assembling** the aforementioned beans. The container gets its instructions on what objects to instantiate, configure, and assemble by reading **configuration metadata**. 
+Import projects... or File ---> Import...
+![import-projects](./import-projects.png)  
+![existing-maven-projects](./existing-maven-projects.png)  
+![select-all-pom-files](./select-all-pom-files.png)  
 
 {{% alert note %}}
-- Representation - org.springframework.context.ApplicationContext
-- Responsibilities - instantiating, configuring, and assembling Beans
-- Tool: configuration metadata
+The import is done by m2e plugin.  
+The **warning** shown below can be ignored.
+maven-remote-resources-plugin (goal "process") is ignored by m2e.
 {{% /alert %}}
 
 
-#### Types of IoC Containers
-
-
-<Project Directory>/.metadata/.plugins/org.eclipse.m2e.core
-
-lifecycle-mapping-metadata.xml
-
-    <?xml version="1.0" encoding="UTF-8"?>
-    <lifecycleMappingMetadata>
-        <pluginExecutions>
-            <pluginExecution>
-                <pluginExecutionFilter>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-remote-resources-plugin</artifactId>
-                    <versionRange>[1.0,)</versionRange>
-                    <goals>
-                        <goal>process</goal>
-                    </goals>
-                </pluginExecutionFilter>
-                <action>
-                    <ignore>
-                    </ignore>
-                </action>
-            </pluginExecution>
-        </pluginExecutions>
-    </lifecycleMappingMetadata>
-
-
-Import projects...
-
-File ---> Import...
+#### Build and Test
 
 Build and test as separate steps, i.e.
 
 - Run As ---> Maven clean
 - Run As ---> Maven build
 - Run As ---> Maven test
+- Run As ---> Maven install
+
+![maven-run-as-options](./maven-run-as-options.png)  
 
 Or define the goals at one time, i.e.
 Run As ---> Maven build...  ---> Goals: (clean install)
-![maven-build](./maven-build.png)  
-
-
-
-maven-remote-resources-plugin (goal "process") is ignored by m2e.
-
-
+![maven-custom-build](./maven-custom-build.png)  
 
 
 {{% alert note %}}
-- In short, the BeanFactory provides the configuration framework and basic functionality, and the ApplicationContext adds more enterprise-specific functionality. The ApplicationContext is a complete superset of the BeanFactory.  
-- You should use an ApplicationContext unless you have a good reason for not doing so, with GenericApplicationContext and its subclass AnnotationConfigApplicationContext as the common implementations for custom bootstrapping.
+Specific module can be chosen and do the same build.  
+Maven will build the dependencies automatically.
 {{% /alert %}}
+
+#### Issues and Tricks
+
+- Too many files with unapproved license
+When doing 'install', the below error occurs. No issue with 'build' and 'test', but with 'install'
+
+>[INFO] BUILD FAILURE
+> Too many files with unapproved license
+
+**Solution**  
+Use or check out clean source code, then do 'install'.
 
 <br>
 
