@@ -95,14 +95,25 @@ Based the Github page [Build Apache ShardingSphere](https://github.com/apache/sh
 Make sure all the tests pass 
 {{% /alert %}}
 
+![FYI-Build-Log-Version-4.1.1](./shardingsphere-4.1.1-build-log.zip) 
+
 #### Issues and Tricks
 
-- Multiple Java version installed
-
-
 - Lombok in the project not support Java 11
+If Java 11 is set as default, this may cause the error below for Lombok does not support Java 11.
+![java.lang.ExceptionInInitializerError](./java-11-not-support-error.png)  
 
+**Solution**  
+Use Java 8.
 
+- Multiple Java version installed
+If multiple versions of Java are installed on the system, such as Java 11 and Java 8, and if Java 11 is set as default, the above error will cause the build failure.
+Even the default JDK is changed to Java 8 by **update-alternatives --config java**, the above issue may still be there.  
+
+**Solution**  
+Uninstall all the JDKs by the command  
+
+    sudo apt-get remove openjdk* 
 
 
 <br>
@@ -168,61 +179,32 @@ Set build threads as 1.
 
 ### IntelliJ IDEA
 
-Inversion of Control is too generic a term, and thus people find it confusing. As a result with a lot of discussion with various IoC advocates, the name was settled on **Dependency Injection**.  
-Dependency injection generally means passing a dependent object as a parameter to a method, rather than having the method create the dependent object.
-What it means in practice is that the method does not have a direct dependency on a particular implementation; any implementation that meets the requirements can be passed as a parameter.
-
-{{% alert note %}}
-The Spring IoC Container is the leading dependency injection framework. 
-{{% /alert %}}
-
-
 #### Import the Project
 Follow the steps below to import the project.  
 
-Import projects... or File ---> Import...
-![import-projects](./import-projects.png)  
-![existing-maven-projects](./existing-maven-projects.png)  
-![select-all-pom-files](./select-all-pom-files.png)  
+On the Welcome window, select **Import Project**, then select the project POM file in the next window.
+![intellij-idea-import](./intellij-idea-import.png)  
+![select-project-pom-file](./select-project-pom-file.png)  
+
 
 {{% alert note %}}
-The **warning** shown below can be ignored.
-maven-remote-resources-plugin (goal "process") is ignored by m2e.
+The **errors** and **warnings** of the POM file analysis can be ignored.
 {{% /alert %}}
 
 
 #### Build and Test
 
-Build and test as separate steps, i.e.
+As there are errors in the POM file, the tool window of Maven lifecyle may not show up automatically.  
+To add Maven support, right click on the project name in the project view, then select **Add Framework Support...**.  
 
-- Run As ---> Maven clean
-- Run As ---> Maven build
-- Run As ---> Maven test
-- Run As ---> Maven install
+In the **Maven** window, different phase of lifecyle of project or module can be chosen to build.  
 
-![maven-run-as-options](./maven-run-as-options.png)  
-
-Or define the goals at one time, i.e.
-Run As ---> Maven build...  ---> Goals: (clean install)
-![maven-custom-build](./maven-custom-build.png)  
-
+![intellij-idea-maven-build](./intellij-idea-maven-build.png)  
 
 {{% alert note %}}
-Specific module can be chosen and do the same build.  
+Specific module can be chosen and do the build.  
 Maven will build the dependencies automatically.
 {{% /alert %}}
-
-#### Issues and Tricks
-
-- Too many files with unapproved license
-When doing 'install', the below error occurs. No issue with 'build' and 'test', but with 'install'
-
->[INFO] BUILD FAILURE
-> Too many files with unapproved license
-
-**Solution**  
-Use or check out clean source code, then do 'install'.
-
 
 
 <br>
@@ -230,16 +212,6 @@ Use or check out clean source code, then do 'install'.
 ### Links
 [Maven - Build Life Cycle](https://www.tutorialspoint.com/maven/maven_build_life_cycle.htm#:~:text=When%20Maven%20starts%20building%20a,are%20registered%20with%20each%20phase.&text=A%20goal%20represents%20a%20specific,and%20managing%20of%20a%20project.)  
 [Introduction to the Build Lifecycle](https://maven.apache.org/guides/introduction/introduction-to-the-lifecycle.html)  
-[eclipse - Apache Camel:m2e忽略了maven-remote-resources-plugin(目标“进程”)](https://www.coder.work/article/6328115)  
-[m2e-execution-not-covered](https://www.eclipse.org/m2e/documentation/m2e-execution-not-covered.html)  
-[Apache Camel: maven-remote-resources-plugin (goal “process”) is ignored by m2e](https://stackoverflow.com/questions/23908837/apache-camel-maven-remote-resources-plugin-goal-process-is-ignored-by-m2e)  
-[Spring – IoC Containers](https://howtodoinjava.com/spring-core/different-spring-ioc-containers/)  
-[Inversion of control](https://en.wikipedia.org/wiki/Inversion_of_control#Implementation_techniques)  
-[What is Dependency Injection and Inversion of Control in Spring Framework?](https://stackoverflow.com/questions/9403155/what-is-dependency-injection-and-inversion-of-control-in-spring-framework)  
-[Interface BeanFactory](https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/beans/factory/BeanFactory.html)  
-[Interface ApplicationContext](https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/context/ApplicationContext.html)  
-[The BeanFactory](https://docs.spring.io/spring/docs/current/spring-framework-reference/core.html#beans-beanfactory)  
-
 
 
 <br>
