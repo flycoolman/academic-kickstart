@@ -12,10 +12,10 @@ categories:
 - Java
 - Shardingsphere
 - Database
-date: "2020-08-01T00:00:00Z"
+date: "2020-08-02T00:00:00Z"
 lastmod: "2020-09-06T00:00:00Z"
 featured: false
-draft: true
+draft: false
 
 # Featured image
 # To use, add an image named `featured.jpg/png` to your page's folder.
@@ -95,19 +95,18 @@ Based the Github page [Build Apache ShardingSphere](https://github.com/apache/sh
 Make sure all the tests pass 
 {{% /alert %}}
 
-![FYI-Build-Log-Version-4.1.1](./shardingsphere-4.1.1-build-log.zip) 
 
 #### Issues and Tricks
 
-- Lombok in the project not support Java 11
+- Lombok in the project not support Java 11  
 If Java 11 is set as default, this may cause the error below for Lombok does not support Java 11.
 ![java.lang.ExceptionInInitializerError](./java-11-not-support-error.png)  
 
 **Solution**  
 Use Java 8.
 
-- Multiple Java version installed
-If multiple versions of Java are installed on the system, such as Java 11 and Java 8, and if Java 11 is set as default, the above error will cause the build failure.
+- Multiple Java version installed  
+If multiple versions of Java are installed on the system, such as Java 11 and Java 8, in the mean time, Java 11 is set as default, the above error will cause the build failure.
 Even the default JDK is changed to Java 8 by **update-alternatives --config java**, the above issue may still be there.  
 
 **Solution**  
@@ -115,6 +114,7 @@ Uninstall all the JDKs by the command
 
     sudo apt-get remove openjdk* 
 
+and reinstall JDK 8.
 
 <br>
 
@@ -130,7 +130,7 @@ Import projects... or File ---> Import...
 
 {{% alert note %}}
 The import is done by m2e plugin.  
-The **warning** shown below can be ignored.
+The **warning** shown below can be ignored.  
 maven-remote-resources-plugin (goal "process") is ignored by m2e.
 {{% /alert %}}
 
@@ -158,7 +158,7 @@ Maven will build the dependencies automatically.
 
 #### Issues and Tricks
 
-- Too many files with unapproved license
+- Too many files with unapproved license  
 When doing 'install', the below error occurs. No issue with 'build' and 'test', but with 'install'
 
 >[INFO] BUILD FAILURE
@@ -167,7 +167,7 @@ When doing 'install', the below error occurs. No issue with 'build' and 'test', 
 **Solution**  
 Use or check out clean source code, then do 'install'.
 
-- Build failed with 8 threads
+- Build failed with 8 threads  
 When setting 8 threads for build, the build failed.
 
 **Solution**  
