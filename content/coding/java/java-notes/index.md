@@ -114,13 +114,14 @@ The permanent generation contains meta data of the virtual machine, class and me
 - Static variables can be accessed by java instance methods also.
 - When the value of a constant is known at compile time it is declared ‘final’ using the ‘static’ keyword.
 
-####Java Static Methods
+#### Java Static Methods
 - Similar to static variables, java static methods are also common to classes and not tied to a java instance.
 - Good practice in java is that, static methods should be invoked with using the class name though it can be invoked using an object. ClassName.methodName(arguments) or objectName.methodName(arguments)
 - General use for java static methods is to access static fields.
 - Static methods can be accessed by java instance methods.
 - Java static methods cannot access instance variables or instance methods directly.
-- Java static methods cannot use the ‘this’ keyword.
+- Java static methods cannot use the ‘this’ keyword.  
+
 #### Java Static Classes
 - For java classes, only an inner class can be declared using the static modifier.  
 - For java a static inner class it does not mean that, all their members are static. These are called nested static classes in java.  
