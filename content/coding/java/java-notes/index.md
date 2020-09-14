@@ -125,6 +125,7 @@ The permanent generation contains meta data of the virtual machine, class and me
 - For java classes, only an inner class can be declared using the static modifier.  
 - For java a static inner class it does not mean that, all their members are static. These are called nested static classes in java.  
 
+[Java Static](https://javapapers.com/core-java/explain-the-java-static-modifier/)  
 
 <br>
 
