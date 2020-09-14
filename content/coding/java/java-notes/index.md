@@ -9,7 +9,7 @@ tags:
 categories:
 - Java
 date: "2019-12-31T23:59:59Z"
-lastmod: "2020-08-22T00:00:00Z"
+lastmod: "2020-01-01T00:00:00Z"
 featured: false
 draft: false
 
