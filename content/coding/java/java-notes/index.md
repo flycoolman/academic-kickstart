@@ -128,6 +128,58 @@ The permanent generation contains meta data of the virtual machine, class and me
 
 [Java Static](https://javapapers.com/core-java/explain-the-java-static-modifier/)  
 
+### Static Block
+
+It's a static initializer. It's executed when the class is loaded (or initialized, to be precise, but you usually don't notice the difference).  
+It can be thought of as a "class constructor".  
+Note that there are also instance initializers, which look the same, except that they don't have the static keyword. Those are run in addition to the code in the constructor when a new instance of the object is created.  
+A static block in Java is a block of code that is executed at the time of loading a class for use in a Java application. It starts with a 'static {' and it is used for initializing static Class members in general — and is also known as a 'Static Initializer'. The most powerful use of a static block can be realized while performing operations that are required to be executed only once for a Class in an application lifecycle.  
+
+[Static Block in Java](https://stackoverflow.com/questions/2943556/static-block-in-java)  
+[The Hidden Synchronized Keyword With a Static Block](https://dzone.com/articles/the-hidden-synchronized-keyword-with-a-static-bloc)  
+
+
+### Builder Patter
+
+**Builder** is a creational design pattern that lets you construct complex objects step by step. The pattern allows you to produce different types and representations of an object using the same construction code.  
+
+Builder pattern builds a complex object using simple objects and using a step by step approach. This type of design pattern comes under creational pattern as this pattern provides one of the best ways to create an object.  
+
+A Builder class builds the final object step by step. This builder is independent of other objects.
+
+#### Pros and Cons
+
+**Pros**  
+ - You can construct objects step-by-step, defer construction steps or run steps recursively.
+ - You can reuse the same construction code when building various representations of products.
+ - Single Responsibility Principle. You can isolate complex construction code from the business logic of the product.
+
+**Cons**  
+- The overall complexity of the code increases since the pattern requires creating multiple new classes.
+
+#### Relations with Other Patterns
+
+- Many designs start by using **Factory Method** (less complicated and more customizable via subclasses) and evolve toward **Abstract Factory**, **Prototype**, or **Builder** (more flexible, but more complicated).
+
+- **Builder** focuses on constructing complex objects step by step. **Abstract Factory** specializes in creating families of related objects. Abstract Factory returns the product immediately, whereas Builder lets you run some additional construction steps before fetching the product.
+
+- You can use **Builder** when creating complex **Composite** trees because you can program its construction steps to work recursively.
+
+- You can combine **Builder** with **Bridge**: the director class plays the role of the abstraction, while different builders act as implementations.
+
+- **Abstract Factories**, **Builders** and **Prototypes** can all be implemented as **Singletons**.
+
+[Builder pattern](https://en.wikipedia.org/wiki/Builder_pattern)  
+[Builder](https://refactoring.guru/design-patterns/builder)  
+[Design Patterns - Builder Pattern](https://www.tutorialspoint.com/design_pattern/builder_pattern.htm)  
+
+
+### transient keyword in Java
+The transient keyword in Java is used to indicate that a field should not be part of the serialization (which means saved, like to a file) process.
+
+[Why does Java have transient fields?](https://stackoverflow.com/questions/910374/why-does-java-have-transient-fields)  
+
+
 <br>
 
 #### Did you find this page helpful? Consider sharing it 🙌
