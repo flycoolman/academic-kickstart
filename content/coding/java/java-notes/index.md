@@ -34,6 +34,11 @@ projects: []
 ## Java Notes
 A free style notes of Java.
 
+### Top 10 Mistakes Java Developers Make
+
+[Top 10 Mistakes Java Developers Make](https://www.programcreek.com/2014/05/top-10-mistakes-java-developers-make/)  
+
+
 ### Differentiate JVM JRE JDK JIT
 
 - Java Virtual Machine (JVM) is an abstract computing machine.
@@ -178,6 +183,87 @@ A Builder class builds the final object step by step. This builder is independen
 The transient keyword in Java is used to indicate that a field should not be part of the serialization (which means saved, like to a file) process.
 
 [Why does Java have transient fields?](https://stackoverflow.com/questions/910374/why-does-java-have-transient-fields)  
+
+### Array vs. ArrayList
+
+- **Array** is a fixed length data structure whereas **ArrayList** is a variable length Collection class.  
+- We cannot change length of array once created in Java but ArrayList can be changed.  
+- We cannot store primitives in ArrayList, it can only store objects. But array can contain both primitives and objects in Java.
+
+
+[Array vs ArrayList in Java](https://www.javatpoint.com/array-vs-arraylist-in-java#:~:text=Array%20is%20a%20fixed%20length,primitives%20and%20objects%20in%20Java.)  
+[Array vs ArrayList in Java](https://www.geeksforgeeks.org/array-vs-arraylist-in-java/)  
+
+
+### Arrays.asList() vs new ArrayList()
+
+When you call Arrays.asList it does not return a java.util.ArrayList. It returns a java.util.Arrays$ArrayList which is a fixed size list backed by the original source array. In other words, it is a view for the array exposed with Java's collection-based APIs.
+
+[Difference between Arrays.asList(array) and new ArrayList<Integer>(Arrays.asList(array))](https://stackoverflow.com/questions/16748030/difference-between-arrays-aslistarray-and-new-arraylistintegerarrays-aslist/16748184#:~:text=asList(ia)%20returns%20a%20List,from%20new%20ArrayList%20.)  
+[Why does Arrays.asList() return its own ArrayList implementation](https://stackoverflow.com/questions/4658867/why-does-arrays-aslist-return-its-own-arraylist-implementation)  
+
+
+### Access Level
+![access-level](./access-level.png)  
+
+[Java Access Level for Members: public, protected, private](https://www.programcreek.com/2011/11/java-access-level-public-protected-private/)  
+
+
+### Set vs. Set<?>
+
+- an unbounded wildcard Set<?> can hold elements of any type, and a raw type Set can also hold elements of any type.
+- wildcard type is safe and the raw type is not. We can not put any element into a Set<?>
+- When you want to use a generic type, but you don't know or care what the actual type the parameter is, you can use <?>[1]. It can only be used as parameters for a method.
+
+[Raw type vs. Unbounded wildcard](https://www.programcreek.com/2013/12/raw-type-set-vs-unbounded-wildcard-set/)  
+
+### ArrayList vs. LinkedList vs. Vector
+
+#### Implementation
+- **ArrayList** is implemented as a resizable array. As more elements are added to ArrayList, its size is increased dynamically. It's elements can be accessed directly by using the get and set methods, since ArrayList is essentially an array.
+- **LinkedList** is implemented as a double linked list. Its performance on add and remove is better than Arraylist, but worse on get and set methods.
+- **Vector** is similar with ArrayList, but it is synchronized.
+
+#### Some details
+- ArrayList is a better choice if your program is thread-safe. 
+- Vector and ArrayList require more space as more elements are added. 
+- Vector each time doubles its array size, while ArrayList grow 50% of its size each time. 
+- LinkedList, however, also implements Queue interface which adds more methods than ArrayList and Vector, such as offer(), peek(), poll(), etc.
+
+{{% alert note %}}
+The default initial capacity of an ArrayList is pretty small. It is a good habit to construct the ArrayList with a higher initial capacity. This can avoid the resizing cost.
+{{% /alert %}}
+
+#### How to use
+- LinkedList should be preferred if there are a large number of add/remove operations  
+- LinkedList should be preferred if there are not a lot of random access operations. 
+- Vector is almost identical to ArrayList, and the difference is that Vector is synchronized. Because of this, it has an overhead than ArrayList. Normally, most Java programmers use ArrayList instead of Vector because they can synchronize explicitly by themselves.
+
+![time-complexity-arraylist-linkedlist](./time-complexity-arraylist-linkedlist.png)  
+add() in the table refers to add(E e), and remove() refers to remove(int index)
+- ArrayList has O(n) time complexity for arbitrary indices of add/remove, but O(1) for the operation at the end of the list.
+- LinkedList has O(n) time complexity for arbitrary indices of add/remove, but O(1) for operations at end/beginning of the List.
+
+
+### Java Collection Hierarchy
+
+![java-collection-hierarchy](./java-collection-hierarchy.png)  
+![java-vollections-hierarchy-1](./java-vollections-hierarchy-1.png)  
+
+
+### Mutable vs. Immutable
+
+
+
+### Java Generics
+
+
+
+
+[Java Generics Tutorial](http://tutorials.jenkov.com/java-generics/index.html)  
+
+
+
 
 
 <br>
