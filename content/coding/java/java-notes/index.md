@@ -180,6 +180,18 @@ The transient keyword in Java is used to indicate that a field should not be par
 [Why does Java have transient fields?](https://stackoverflow.com/questions/910374/why-does-java-have-transient-fields)  
 
 
+### Java.util.Properties
+
+The java.util.Properties class is a class which represents a persistent set of properties.The Properties can be saved to a stream or loaded from a stream.Following are the important points about Properties
+
+- Each key and its corresponding value in the property list is a string.  
+- A property list can contain another property list as its 'defaults', this second property list is searched if the property key is not found in the original property list.  
+- This class is thread-safe; multiple threads can share a single Properties object without the need for external synchronization.  
+- Properties is a subclass of Hashtable.
+
+[Java.util.Properties Class](https://www.tutorialspoint.com/java/util/java_util_properties.htm)  
+[Java.util.Properties class in Java](https://www.geeksforgeeks.org/java-util-properties-class-java/)  
+
 <br>
 
 #### Did you find this page helpful? Consider sharing it 🙌
