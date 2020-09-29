@@ -248,7 +248,121 @@ add() in the table refers to add(E e), and remove() refers to remove(int index)
 ### Java Collection Hierarchy
 
 ![java-collection-hierarchy](./java-collection-hierarchy.png)  
-![java-vollections-hierarchy-1](./java-vollections-hierarchy-1.png)  
+![java-collections-hierarchy-1](./java-vollections-hierarchy-1.png)  
+![java-collections-hierarchy-2](./java-vollections-hierarchy-2.png) 
+
+### Arrays.asList() Variable Arguments
+
+Since the asList method in Arrays uses variable arguments, and **variable arguments expressions are mapped to arrays**, you could either pass an inline array as in:  
+
+    List<String> list = Arrays.asList(new String[]{"a", "b", "c"});  
+
+
+Or simply pass the variable arguments that will be automatically mapped to an array:  
+
+    List<String> list = Arrays.asList("a","b","c");  
+
+
+### Varargs (Variable-length Arguments)
+
+A method that takes a variable number of arguments is a varargs method.  
+
+A variable-length argument is specified by three periods(…). For Example,
+
+   public static void varargFunction(dataType ... dataVar) 
+   {
+      // method body
+   } 
+
+The ... syntax tells the Java compiler that the method can be called with zero or more arguments. As a result, **dataVar** variable is implicitly declared as an array of type dataType[ ]. Thus, inside the method, **dataVar** variable is accessed using the array syntax.  
+In case of no arguments, the length of nums is 0.  
+
+
+- Vararg Methods can also be overloaded but overloading may lead to ambiguity.
+- Prior to JDK 5, variable length arguments could be handled into two ways : One was using overloading, other was using array argument.
+- There can be only one variable argument in a method.
+- Variable argument (varargs) must be the last argument.
+
+
+### Patterns by type
+
+- Creational
+Creational patterns are ones that create objects, rather than having to instantiate objects directly. This gives the program more flexibility in deciding which objects need to be created for a given case.
+    * Abstract factory
+    groups object factories that have a common theme.
+    * Builder
+    constructs complex objects by separating construction and representation.
+    * Factory method
+    creates objects without specifying the exact class to create.
+    * Prototype
+    creates objects by cloning an existing object.
+    * Singleton
+    restricts object creation for a class to only one instance.
+
+
+- Structural
+These concern class and object composition. They use inheritance to compose interfaces and define ways to compose objects to obtain new functionality.
+
+    * Adapter
+    allows classes with incompatible interfaces to work together by wrapping its own interface around that of an already existing class.
+    * Bridge
+    decouples an abstraction from its implementation so that the two can vary independently.
+    * Composite
+    composes zero-or-more similar objects so that they can be manipulated as one object.
+    * Decorator
+    dynamically adds/overrides behaviour in an existing method of an object.
+    * Facade
+    provides a simplified interface to a large body of code.
+    * Flyweight
+    reduces the cost of creating and manipulating a large number of similar objects.
+    * Proxy
+    provides a placeholder for another object to control access, reduce cost, and reduce complexity.
+
+- Behavioral
+Most of these design patterns are specifically concerned with communication between objects.
+
+    * Chain of responsibility
+    delegates commands to a chain of processing objects.
+    * Command
+    creates objects which encapsulate actions and parameters.
+    * Interpreter
+    implements a specialized language.
+    * Iterator
+    accesses the elements of an object sequentially without exposing its underlying representation.
+    * Mediator
+    allows loose coupling between classes by being the only class that has detailed knowledge of their methods.
+    * Memento
+    provides the ability to restore an object to its previous state (undo).
+    * Observer
+    is a publish/subscribe pattern which allows a number of observer objects to see an event.
+    * State
+    allows an object to alter its behavior when its internal state changes.
+    * Strategy
+    allows one of a family of algorithms to be selected on-the-fly at runtime.
+    * Template method
+    defines the skeleton of an algorithm as an abstract class, allowing its subclasses to provide concrete behavior.
+    * Visitor
+    separates an algorithm from an object structure by moving the hierarchy of methods into one object.
+
+
+[Design Patterns](https://en.wikipedia.org/wiki/Design_Patterns)  
+
+### Factory Pattern
+
+
+
+
+### Java Best Practice
+
+#### Return a List, not a LinkedList
+#### Return a List, not an ArrayList
+
+Your Java code will be more flexible when you learn to return more-general object references. In most cases other developers only need to see your interface, not your implementation. Put another way, does it matter to anyone else if you used a LinkedList or an ArrayList? If it doesn't matter, then return a List, or perhaps even a Collection.  
+It's best to return the most generic type that's appropriate for your interface.  
+If there's some reason why ArrayList is inherently appropriate for the data you're returning then you should use that. Typically List is fine but you might also consider using Collection if the returned values are inherently unordered.
+
+[Should i return List or ArrayList](https://stackoverflow.com/questions/10328658/should-i-return-list-or-arraylist#:~:text=The%20only%20reason%20to%20return,properly%20serialize%20generic%20list%20interface.)  
+[Java Best Practice  - return a List, not a LinkedList](https://alvinalexander.com/blog/post/java/java-return-collection-list-not-linkedlist/)  
 
 
 ### Mutable vs. Immutable
@@ -258,10 +372,18 @@ add() in the table refers to add(E e), and remove() refers to remove(int index)
 ### Java Generics
 
 
-
+[Java Generics](https://www.ntu.edu.sg/home/ehchua/programming/java/JavaGeneric.html)  
+[Generic Lists](https://www.cs.wcupa.edu/rkline/cs3/generic-lists.html)  
 
 [Java Generics Tutorial](http://tutorials.jenkov.com/java-generics/index.html)  
 
+
+### Java X-ables
+
+Mutable vs. Immutable
+Closable
+Serialable
+Comparable
 
 
 
