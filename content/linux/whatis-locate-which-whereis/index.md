@@ -1,7 +1,7 @@
 ---
 title: 'Whatis Locate Which Whereis'
 # subtitle: 'Create a beautifully simple website in under 10 minutes :rocket:'
-summary: A shor summary of the commands 'Whatis', 'Locate', 'Which', 'Whereis'.
+summary: A short summary of the commands 'Whatis', 'Locate', 'Which', 'Whereis'.
 authors:
 - admin
 tags:
