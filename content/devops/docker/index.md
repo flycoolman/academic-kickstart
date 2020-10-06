@@ -53,7 +53,7 @@ In 4 bullet points:
 - Containers ensure isolation through namespaces  
 - Containers feel like lightweight VMs (lower footprint, faster), but are not Virtual Machines!  
 
-### Namespaces and Cgroups  -------->  Docker
+### Namespaces and Cgroups  - - - - - - >  Docker
 
 Docker makes use of kernel **namespaces** to provide the **isolated workspace** called the container.   
 Docker also makes use of kernel **control groups** for resource allocation and isolation.  
@@ -128,7 +128,7 @@ Sometimes you see **COPY** or **ADD** being used in a Dockerfile, but 99% of the
 Both CMD and ENTRYPOINT are straight forward but they have a hidden, err, "feature" that can cause issues if you are not aware. Two different syntaxes are supported for these instructions.  
 
 CMD /bin/echo  
- or
+ or  
 CMD ["/bin/echo"]  
 This may not look like it would be an issues but the devil in the details will trip you up. If you use the second syntax where the CMD ( or ENTRYPOINT ) is an array, it acts exactly like you would expect. If you use the first syntax without the array, docker pre-pends /bin/sh -c to your command. This has always been in docker as far as I can remember.  
 
