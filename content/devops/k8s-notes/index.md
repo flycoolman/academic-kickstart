@@ -223,7 +223,6 @@ The affinity feature consists of two types of affinity, “node affinity” and 
 Node affinity is conceptually similar to nodeSelector – it allows you to constrain which nodes your pod is eligible to be scheduled on, based on labels on the node.
 
 
-
 ### Deploy
 
 When you wish to deploy an application in Kubernetes, you usually define three components:  
@@ -319,15 +318,21 @@ Examples are:
 - Flux  The GitOps Kubernetes Operator
 
 {{% alert note %}}
-Always use the array syntax when using CMD and ENTRYPOINT.
+TBD
 {{% /alert %}}
 
 
- 
+
+### Troubleshooting
+
+
+[A visual guide on troubleshooting Kubernetes deployments](https://learnk8s.io/troubleshooting-deployments) | [PDF](./A-visual-guide-on-troubleshooting-Kubernetes.pdf) 
 
 ## Links
 
-[The Difference between COPY and ADD in a Dockerfile](https://nickjanetakis.com/blog/docker-tip-2-the-difference-between-copy-and-add-in-a-dockerile)  
+[Kubernetes Networking](https://cloudnativelabs.github.io/post/2017-04-18-kubernetes-networking/)  
+[Ultimate Guide to ConfigMaps in Kubernetes](https://matthewpalmer.net/kubernetes-app-developer/articles/ultimate-configmap-guide-kubernetes.html)  
+[A visual guide on troubleshooting Kubernetes deployments](https://learnk8s.io/troubleshooting-deployments)  
 
 <br>
 
