@@ -11,6 +11,8 @@ tags:
 categories:
 - Linux
 - System
+- DevOps
+- SRE
 date: "2020-09-10T00:00:00Z"
 lastmod: "2020-10-05T00:00:00Z"
 featured: false
