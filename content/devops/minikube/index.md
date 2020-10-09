@@ -61,7 +61,11 @@ password: tcuser
 i.e.  
 
     ssh docker@192.168.99.103
+![minikube-login](./minikube-login.png)  
 
+    ssh docker@$(minikube ip)
+
+![minikube-login-1](./minikube-login-1.png)  
 
 Exit the login:
 exit
