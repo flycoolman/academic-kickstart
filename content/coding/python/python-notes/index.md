@@ -54,12 +54,31 @@ In fact, there are not many values that evaluates to False,
 - the number 0, and the value None.  
 - And of course the value False evaluates to False.  
 
+### Casting
+
+- **int()** - constructs an integer number from an integer literal, a float literal (by rounding down to the previous whole number), or a string literal (providing the string represents a whole number)  
+- **float()** - constructs a float number from an integer literal, a float literal or a string literal (providing the string represents a float or an integer)  
+- **tr()** - constructs a string from a wide variety of data types, including strings, integer literals and float literals  
+
+### Dictionary: [] vs. update
+[How can I add new keys to a dictionary?](https://stackoverflow.com/questions/1024847/how-can-i-add-new-keys-to-a-dictionary)  
+- **[]**  
+you create a new key\value pair on a dictionary by assigning a value to that key. If the key doesn't exist, it's added and points to that value. If it exists, the current value it points to is overwritten.  
+the d[key]=val syntax as it is shorter and can handle any object as key (as long it is hashable), and only sets one value
+
+- **update**  
+Whereas the .update(key1=val1, key2=val2) is nicer if you want to set multiple values at the same time, as long as the keys are strings (since kwargs are converted to strings).  
+{{% alert note %}}
+dict.update can also take another dictionary, but I personally prefer not to explicitly create a new dictionary in order to update another one. 
+{{% /alert %}}
+
+
 {{% alert note %}}
 TBD
 {{% /alert %}}
 
-Pass By Value and Pass By Reference and Pass Reference by Value
-[Java Pass By Value and Pass By Reference](https://javapapers.com/core-java/java-pass-by-value-and-pass-by-reference/)  
+
+[Just a Placeholder](https://flycoolman.com)  
 
 
 <br>
