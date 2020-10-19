@@ -1,13 +1,16 @@
 ---
-title: 'Frequent Mistakes'
+title: 'Python vs. Java'
 # subtitle: 'Create a beautifully simple website in under 10 minutes :rocket:'
 summary: A VS. notes between Python and Java.
 authors:
 - admin
 tags:
 - Python
+- Java
 categories:
+- Coding
 - Python
+- Java
 date: "2019-12-31T23:59:59Z"
 lastmod: "2020-01-01T00:00:00Z"
 featured: false
@@ -31,7 +34,7 @@ image:
 projects: []
 ---
 
-## Frequent Mistakes
+## Python vs. Java
 A VS. notes between Python and Java.
 
 ### Type casting
@@ -49,11 +52,18 @@ A VS. notes between Python and Java.
 - Python: True/False  
 - Java: true/false   
 
+### Map sorting
+
+- Python:  
+Easy to use sorted() and lambda to sort dict/map by keys or values  
+- Java:  
+Use Collections.sort() and Comparator to sort map by keys or values  
+
 
 
 
 {{% alert note %}}
-TBD
+To Be Continued
 {{% /alert %}}
 
 

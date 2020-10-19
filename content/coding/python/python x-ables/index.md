@@ -37,7 +37,26 @@ projects: []
 
 
 
-iterable, hashable, subscriptable, callable
+iterable, hashable, subscriptable, callable, serializable
+
+>>> for i in range(5)[::-1]:
+...     print(i)
+...
+4
+3
+2
+1
+0
+>>> range(5)
+range(0, 5)
+>>> print(range(5))
+range(0, 5)
+>>> list(range(5))
+[0, 1, 2, 3, 4]
+
+
+[Python sorted()](https://www.programiz.com/python-programming/methods/built-in/sorted)  
+iterable - A sequence (string, tuple, list) or collection (set, dictionary, frozen set) or any other iterator.
 
 
 'builtin_function_or_method' object is not subscriptable
