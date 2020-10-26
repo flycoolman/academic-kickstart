@@ -58,6 +58,8 @@ A VS. notes between Python and Java.
 Easy to use sorted() and lambda to sort dict/map by keys or values  
 - Java:  
 Use Collections.sort() and Comparator to sort map by keys or values  
+Java 8 provides new ways of defining Comparators by using lambda expressions and the comparing() static factory method.  
+
 
 
 

@@ -318,6 +318,34 @@ Kubernetes has two types of roles, role and clusterRole, the difference being th
 The RoleBinding allows a mapping of a subject like a user or group to a specific role. Bindings also have two modes: roleBinding, which is specific to a namespace, and clusterRoleBinding, which is across the entire cluster.  
 
 
+### Storage
+
+- PersistentVolume – the low level representation of a storage volume  
+- Volume Driver – the code used to communicate with the backend storage provider  
+- Pod – a running container that will consume a PersistentVolume  
+- PersistentVolumeClaim – the binding between a Pod and PersistentVolume  
+- StorageClass – allows for dynamic provisioning of PersistentVolumes  
+
+#### Controllers and Kubelets
+Kubernetes has a number of controllers that run on the masters, monitor the state of the cluster and initiate actions in response to events.  
+It also runs a kubelet process on all of the worker nodes. The kubelet stays in constant contact with the controllers, submitting metrics about current running pods and listening for new instructions.  
+
+##### Kubelet:
+- Mount and format new PersistentVolumes that are scheduled to this host
+- Start containers with PersistentVolume hostpath mounted inside the container
+- Stop containers and unmount the associated PersistentVolume
+- Constantly send metrics to the controllers about container & PersistentVolume state
+##### Controller:
+- to match a PersistentVolumeClaim to a PersistentVolume  
+- to dynamically provision a new PersistentVolume if a claim cannot be met (if enabled)  
+    * in the case of EBS this is done via the AWS api from the masters  
+- to attach the backend storage to a specific node if needed  
+    * in the case of EBS this is done via the AWS api from the masters  
+- to instruct the kubelet for a node to mount (and potentially format) the volume  
+    * this is done on the actual node  
+- to instruct the kubelet to start a container that uses the volume  
+The kubelet itself performs the low-level mount and mkfs commands when instructed by the controller.  
+
 
 
 
@@ -349,6 +377,7 @@ TBD
 [Kubernetes Networking](https://cloudnativelabs.github.io/post/2017-04-18-kubernetes-networking/)  
 [Ultimate Guide to ConfigMaps in Kubernetes](https://matthewpalmer.net/kubernetes-app-developer/articles/ultimate-configmap-guide-kubernetes.html)  
 [A visual guide on troubleshooting Kubernetes deployments](https://learnk8s.io/troubleshooting-deployments)  
+[A Basic Guide to Kubernetes Storage: PVS, PVCs, Statefulsets and More](https://portworx.com/basic-guide-kubernetes-storage/)  
 
 <br>
 
