@@ -367,9 +367,21 @@ If there's some reason why ArrayList is inherently appropriate for the data you'
 
 ### Mutable vs. Immutable
 
+#### String vs StringBuilder vs StringBuffer
+
+[String vs StringBuilder vs StringBuffer in Java](https://www.geeksforgeeks.org/string-vs-stringbuilder-vs-stringbuffer-in-java/)  
+
+- String is immutable  
+- StringBuilder is mutable  
+- StringBuffer is similar to StringBuilder except one difference that StringBuffer is thread safe, i.e., multiple threads can use it without any issue. The thread safety brings a penalty of performance  
+- When to use  
+    * If a string is going to remain constant throughout the program, then use String class object because a String object is immutable.  
+    * If a string can change (example: lots of logic and operations in the construction of the string) and will only be accessed from a single thread, using a StringBuilder is good enough.  
+    * If a string can change, and will be accessed from multiple threads, use a StringBuffer because StringBuffer is synchronous so you have thread-safety.  
 
 
-### Java Generics
+
+
 
 
 [Java Generics](https://www.ntu.edu.sg/home/ehchua/programming/java/JavaGeneric.html)  
@@ -386,6 +398,33 @@ Serialable
 Comparable
 
 
+### Java toString() works differently between Array and ArrayList
+
+[Why toString() method works differently between Array and ArrayList object in Java](https://stackoverflow.com/questions/13780374/why-tostring-method-works-differently-between-array-and-arraylist-object-in-ja)  
+
+The main difference between an array and an arraylist is that an arraylist is a class that is written in Java and has its own implementation (including the decision to override toString) whereas arrays are part of the language specification itself.  
+In other words the language specification prevents the toString method of an array to be overriden and it therefore uses the default implementation defined in Object which prints the class name and hashcode.  
+
+- An array, i.e. int[], String[], does not have toString(), but use the default implementation defined in Object
+- Arrays class has its own toString() implementation, i.e. Arrays.toString(arr)  
+
+#### Comparable vs Comparator in Java
+
+[Comparable vs Comparator in Java](https://www.geeksforgeeks.org/comparable-vs-comparator-in-java/)  
+[Comparator Interface in Java with Examples](https://www.geeksforgeeks.org/comparator-interface-java/)  
+
+A comparable object is capable of comparing itself with another object. The class itself must implements the java.lang.Comparable interface (override compareTo() method) to compare its instances.  
+
+Unlike Comparable, **Comparator** is external to the element type we are comparing. It’s a separate class. We create multiple separate classes (that implement Comparator) to compare by different members.  
+
+Collections class has a second sort() method and it takes Comparator. The **sort()** method invokes the **compare()** to sort objects.  
+##### How does Collections.Sort() work?   
+Internally the Sort method does call Compare method of the classes it is sorting. To compare two elements, it asks “Which is greater?” Compare method returns -1, 0 or 1 to say if it is less than, equal, or greater to the other. It uses this result to then determine if they should be swapped for its sort.  
+
+- Comparable is meant for objects with natural ordering which means the object itself must know how it is to be ordered. Whereas, Comparator interface sorting is done through a separate class.  
+- Logically, Comparable interface compares “this” reference with the object specified and Comparator in Java compares two different class objects provided.  
+If any class implements Comparable interface in Java then collection of that object either List or Array can be sorted automatically by using Collections.sort() or Arrays.sort() method and objects will be sorted based on there natural order defined by CompareTo method.  
+- To summarize, if sorting of objects needs to be based on natural order then use Comparable whereas if you sorting needs to be done on attributes of different objects, then use Comparator in Java.
 
 
 ### Java.util.Properties

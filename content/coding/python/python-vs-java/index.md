@@ -61,8 +61,56 @@ Use Collections.sort() and Comparator to sort map by keys or values
 Java 8 provides new ways of defining Comparators by using lambda expressions and the comparing() static factory method.  
 
 
+### Python max() vs Java Math.max() vs Java Collections.max()
 
+- Python max()  
+Can campare multiple items, or iterable, even strings  
 
+        max(n1, n2, n3, ...)
+or
+
+        max(iterable)
+or **Compare strings**  
+
+        max("Mike", "John", "Vicky")
+
+- Java max()  
+Only compare two mathematic items, i.e. int, float, double ...  
+
+- Java Collections.max()  
+
+max(Collection<? extends T> coll)  
+Returns the maximum element of the given collection, according to the natural ordering of its elements.  
+static <T> T	max(Collection<? extends T> coll, Comparator<? super T> comp)  
+Returns the maximum element of the given collection, according to the order induced by the specified comparator.  
+**Compare Integers**  
+
+        Integer[] num = { 2, 4, 7, 5, 9 };
+        // using Collections.min() to
+        // find minimum element
+        // using only 1 line.
+        int min = Collections.min(Arrays.asList(num));
+        // using Collections.max()
+        // to find maximum element
+        // using only 1 line.
+        int max = Collections.max(Arrays.asList(num));
+
+or **Compare Strings**  
+
+        // List<String> list = new ArrayList<String>(Arrays.asList("Mike Smith", "John", "Vicky"));
+        List<String> list = Arrays.asList("Mike", "John", "Vicky");
+        String max = Collections.max(list);
+or **Use comparator**  
+
+        List<String> list = Arrays.asList("Mike Smith", "John", "Vicky");
+        String max = Collections.max(list, Comparator.comparing(s -> s.length()));
+
+{{% alert note %}}
+Python - Java  
+The aboves are same to min().  
+{{% /alert %}}
+
+### 
 
 {{% alert note %}}
 To Be Continued

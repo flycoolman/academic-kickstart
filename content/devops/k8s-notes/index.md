@@ -331,10 +331,11 @@ Kubernetes has a number of controllers that run on the masters, monitor the stat
 It also runs a kubelet process on all of the worker nodes. The kubelet stays in constant contact with the controllers, submitting metrics about current running pods and listening for new instructions.  
 
 ##### Kubelet:
-- Mount and format new PersistentVolumes that are scheduled to this host
-- Start containers with PersistentVolume hostpath mounted inside the container
-- Stop containers and unmount the associated PersistentVolume
-- Constantly send metrics to the controllers about container & PersistentVolume state
+- Mount and format new PersistentVolumes that are scheduled to this host  
+- Start containers with PersistentVolume hostpath mounted inside the container  
+- Stop containers and unmount the associated PersistentVolume  
+- Constantly send metrics to the controllers about container & PersistentVolume state  
+
 ##### Controller:
 - to match a PersistentVolumeClaim to a PersistentVolume  
 - to dynamically provision a new PersistentVolume if a claim cannot be met (if enabled)  
