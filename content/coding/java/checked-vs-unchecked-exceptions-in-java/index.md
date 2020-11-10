@@ -237,12 +237,16 @@ When starting seeing bugs, the log will assist in pointing you to the place your
 24. Do something useful with the errors (logs, restarts, recoveries, etc)  
 25. Use one big handler at the higher-level to manage any or all of the weird conditions arising in the code that aren't caught at a low-level  
 26. Think about validation check vs exception  
+Throwing an exception is a expensive process.  
     - NullPointerException   
     Catching a NullPointerException should replaced with a graceful null-check.  
     - NumberFormatException  
     Catching a NumberFormatException explicitly to avoid possible introduction of error prone code to handle different number formats.  
-    
-Once you embrace exceptions, you should find that it makes your code simpler and clearer, by moving your error handling code away from your core logic. Aim to have lots of statements in a single try block.
+27. Avoid exception handling inside loops   
+If it is truly necessary implement a try/catch block arround the entire loop.    
+28. Adopt a standard way of handling exceptions through try/catch/finally blocks  
+This is the recommended approach to handle exceptions in managed code. Finally blocks ensure that resources are closed in the event of an exception.
+
 
 {{% alert note %}}
 Be respectful of the language and how it traditionally manages such issues. For example, don't bring a C mindset into a Java world.
@@ -295,6 +299,21 @@ wrapping exceptions (checked or otherwise) has several benefits that are worth t
 3. **It lets you become implementation-independent from the lower level code.** If you're wrapping exceptions and need to swap out Hibernate for some other ORM, you only have to change your Hibernate-handling code. All the other layers of code will still be successfully using the wrapped exceptions and will interpret them in the same way, even though the underlying circumstances have changed. Note that this applies even if Hibernate changes in some way (ex: they switch exceptions in a new version); it's not just for wholesale technology replacement.  
 
 4. **It encourages you use different classes of exceptions to represent different situations.** For example, you may have a DuplicateUsernameException when the user tries to reuse a username, and a DatabaseFailureException when you can't check for dupe usernames due to a broken DB connection. This, in turn, lets you answer your question ("how do I recover?") in flexible and powerful ways. If you get a DuplicateUsernameException, you may decide to suggest a different username to the user. If you get a DatabaseFailureException, you may let it bubble up to the point where it displays a "down for maintenance" page to the user and send off a notification email to you. Once you have custom exceptions, you have customizeable responses -- and that's a good thing.
+
+### Exception Management Architecture
+
+The exception management architecture of an application should be capable of:  
+
+- Detecting exceptions  
+- Performing code clean up  
+- Wrapping one exception inside another  
+- Replacing one exception with another  
+- Logging and reporting error information  
+- Generating events that can be monitored externally to assist system operation  
+
+At the beginning of the design you must plan for a consist and robust exception management architecture. It should be well encapsulated and abstract the details of logging and reporting throughout all of your application.  
+
+Once you embrace exceptions, you should find that it makes your code simpler and clearer, by moving your error handling code away from your core logic. Aim to have lots of statements in a single try block.  
 
 
 ### Links
