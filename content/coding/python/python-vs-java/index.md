@@ -110,7 +110,30 @@ Python - Java
 The aboves are same to min().  
 {{% /alert %}}
 
-### 
+### Infinity
+
+- Python  
+    * math.inf
+      The **math.inf** constant returns a floating-point positive infinity.
+      For negative infinity, use **-math.inf**.
+      The inf constant is equivalent to float('inf').
+      
+        import math
+        print(math.inf)
+    * sys.maxsize  
+    An integer giving the maximum value a variable of type Py_ssize_t can take. It’s usually 2**31 - 1 on a 32-bit platform and 2**63 - 1 on a 64-bit platform.  
+    like sys.maxint in Python2.  
+
+- Java  
+    * Integer.MAX_VALUE, Integer.MIN_VALUE, Integer.MAX_VALUE+1, Integer.MIN_VALUE-1  
+    * Long.MAX_VALUE, Long.MIN_VALUE  
+    * Float.MAX_VALUE, Float.MIN_VALUE, Float.POSITIVE_INFINITY, Float.NEGATIVE_INFINITY  
+    * Double.MAX_VALUE, Double.MIN_VALUE, Double.POSITIVE_INFINITY, Double.NEGATIVE_INFINITY, Double.NaN
+
+
+{{% alert note %}}
+There is no way to represent infinity as an integer in Python. This matches the behaviour of many other languages. However, due to Python's dynamic typing system, you can use float('inf') in place of an integer, and it will behave as you would expect.
+{{% /alert %}}
 
 {{% alert note %}}
 To Be Continued
