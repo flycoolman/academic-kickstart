@@ -1,5 +1,5 @@
 ---
-title: 'Manacher's Algorithm'
+title: 'Manacher''s Algorithm'
 # subtitle: 'Create a beautifully simple website in under 10 minutes :rocket:'
 summary: Summary of the Manacher's algorithm.
 authors:
@@ -12,7 +12,7 @@ categories:
 date: "2020-10-30T00:00:00Z"
 lastmod: "2020-10-30T00:00:00Z"
 featured: false
-draft: true
+draft: false
 
 # Featured image
 # To use, add an image named `featured.jpg/png` to your page's folder.
@@ -64,7 +64,7 @@ To simplify the desciption, define:
 - **C** is the center position of panlindrome **sub(C)** of string S.  
 - **L** is the leftmost position of sub(C).  
 - **R** is the rightmost position of sub(C).  
-- **P[x]** is the array to store the length of panlindrome, which has center position x.  
+- **P[i]** is the array to store the length of panlindrome, which has center position x.  
 - **i** is the position that needs to calculate the length of panlindrom, that is to calculate **P[i]** of **sub(i)**.  
 - **j** is the mirroring position of i about center position C.  
 - **P[j]** is the calculated/known lenght of panlindrome **sub(j)**.  
