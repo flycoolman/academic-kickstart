@@ -6,9 +6,12 @@ authors:
 - admin
 tags:
 - Python
-- Type hints
+- Manacher''s Algorithm
+- Algorithm
 categories:
 - Python
+- Java
+- Algorithm
 date: "2020-10-30T00:00:00Z"
 lastmod: "2020-10-30T00:00:00Z"
 featured: false
