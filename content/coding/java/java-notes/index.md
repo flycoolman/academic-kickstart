@@ -34,6 +34,23 @@ projects: []
 ## Java Notes
 A free style notes of Java.
 
+### Basic knowledge
+
+- Static blocks  
+- Non static blocks  
+- Static methods  
+- Non-Static methods  
+- Static blank final variables
+- Non-Static blank final variables
+- Static classes  
+- Non-Static inner classes  
+- Static and dynamic polymorphism
+- Static binding/Early binding
+- Dynamic binding/Late binding
+
+
+
+
 ### Top 10 Mistakes Java Developers Make
 
 [Top 10 Mistakes Java Developers Make](https://www.programcreek.com/2014/05/top-10-mistakes-java-developers-make/)  
@@ -47,6 +64,16 @@ A free style notes of Java.
 - Just In Time compiler (JIT) is runs after the program has started executing, on the fly. It has access to runtime information and makes optimizations of the code for better performance.
 
 [Differentiate JVM JRE JDK JIT](https://javapapers.com/core-java/differentiate-jvm-jre-jdk-jit/)  
+
+### Class vs Interface
+- **Class:** A class is a user-defined blueprint or prototype from which objects are created. It represents the set of properties or methods that are common to all objects of one type.  
+- **Interface:** Like a class, an interface can have methods and variables, but the methods declared in an interface are by default abstract (only method signature, no body). Interfaces specify what a class must do and not how. It is the blueprint of the class.  
+
+An interface defines a protocol of behavior and not how we should be implemented. A class that implements an interface adheres to the protocol defined by that interface.
+
+- Interface variables are static because java interfaces cannot be instantiated on their own. The value of the variable must be assigned in a static context in which no instance exists.  
+- The final modifier ensures the value assigned to the interface variable is a true constant that cannot be re-assigned. In other words, interfaces can declare only constants, not instance variables.  
+
 
 ### Pass By Value and Pass By Reference and Pass Reference by Value
 
@@ -142,6 +169,8 @@ A static block in Java is a block of code that is executed at the time of loadin
 
 [Static Block in Java](https://stackoverflow.com/questions/2943556/static-block-in-java)  
 [The Hidden Synchronized Keyword With a Static Block](https://dzone.com/articles/the-hidden-synchronized-keyword-with-a-static-bloc)  
+
+
 
 
 ### Builder Patter
@@ -248,8 +277,32 @@ add() in the table refers to add(E e), and remove() refers to remove(int index)
 ### Java Collection Hierarchy
 
 ![java-collection-hierarchy](./java-collection-hierarchy.png)  
-![java-collections-hierarchy-1](./java-vollections-hierarchy-1.png)  
-![java-collections-hierarchy-2](./java-vollections-hierarchy-2.png) 
+![java-collections-hierarchy-1](./java-collections-hierarchy-1.png)  
+![java-collections-hierarchy-2](./java-collections-hierarchy-2.jpg) 
+
+#### The queue (a FIFO list)  
+Implementation of a queue
+- A queue (of bounded size) can be efficiently implemented in an array. Look at JavaHypertext entry “queue”.  
+- A queue can be efficiently implemented using any linked list that supports deletion in the front and insertion at the end in constant time. The first (last) element of the queue is at the front (end) of the linked list.  
+
+#### The stack (a LIFO list)
+
+Implementation of a stack
+- A stack (of bounded size) can be efficiently implemented using an array b and an int variable n: The n elements of the stack are in b[0..n-1], with b[0] being the bottom element and b[n-1] being the top element.  
+- A stack can be efficiently implemented using a linked list. The first element is the top of the stack and the last element is the bottom. It’s easy to push (prepend) an element and pop (remove) the first element in constant time.  
+
+#### The deque
+The word deque, usually pronounced deck, is short for double-ended queue. A deque is a list that supports insertion and removal at both ends. Thus, a deque can be used as a queue or as a stack.  
+
+#### Stacks, queues, and deques in the Java Collection framework
+- Java has interface Deque<E>. It is implemented by classes ArrayDeque<E> (which implements a list in an expandable array) and LinkedList<E>, so these two classes can be used for a queue and for a stack.  
+- Both ArrayDeque and LinkedList also implement interface Queue<E>, so you can use this interface to restrict operations to queue operations. For example, create a LinkedList and assign it to a Queue variable.  
+
+        Queue<E> q= new LinkedList<>();  
+
+Thereafter, use only q for the LinkedList and operations are restricted to queue operations.
+- Java also has a class Stack<E>, which implements a stack in an expandable array. However, the Java API would rather you use an ArrayDeque. The problem is that there is no suitable way to restrict the operations of an Array-Deque to stack operations, so we prefer to use class Stack<E>.
+
 
 ### Arrays.asList() Variable Arguments
 
@@ -438,6 +491,19 @@ The java.util.Properties class is a class which represents a persistent set of p
 
 [Java.util.Properties Class](https://www.tutorialspoint.com/java/util/java_util_properties.htm)  
 [Java.util.Properties class in Java](https://www.geeksforgeeks.org/java-util-properties-class-java/)  
+
+
+### Java 8
+
+#### Stream
+
+
+#### forEach
+
+#### Optional
+
+
+
 
 <br>
 

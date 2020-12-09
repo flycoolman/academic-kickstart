@@ -139,6 +139,16 @@ There is no way to represent infinity as an integer in Python. This matches the 
 To Be Continued
 {{% /alert %}}
 
+### Map/Dict Composite key
+
+- Python  
+
+        map = {(1, 0) : 2, (1, 1) : 3, (2, 0) : 4, (2, 1) : 5}
+        map[(1,0)]
+        map.get((1,0))
+
+- Java  
+Not so easy to do
 
 
 

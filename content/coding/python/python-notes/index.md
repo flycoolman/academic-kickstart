@@ -72,6 +72,19 @@ Whereas the .update(key1=val1, key2=val2) is nicer if you want to set multiple v
 dict.update can also take another dictionary, but I personally prefer not to explicitly create a new dictionary in order to update another one. 
 {{% /alert %}}
 
+### collections
+[collections — Container datatypes](https://docs.python.org/3/library/collections.html)  
+This module implements specialized container datatypes providing alternatives to Python’s general purpose built-in containers, dict, list, set, and tuple.  
+
+![python-collections](./python-collections.png)
+
+{{% alert note %}}
+Deprecated since version 3.3, will be removed in version 3.10: Moved Collections Abstract Base Classes to the collections.abc module. For backwards compatibility, they continue to be visible in this module through Python 3.9.
+{{% /alert %}}
+
+
+### collections.abc
+collections.abc — Abstract Base Classes for Containers  
 
 {{% alert note %}}
 TBD
