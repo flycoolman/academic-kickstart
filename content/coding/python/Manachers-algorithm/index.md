@@ -6,7 +6,7 @@ authors:
 - admin
 tags:
 - Python
-- Manacher''s Algorithm
+- Manacher's Algorithm
 - Algorithm
 categories:
 - Python
