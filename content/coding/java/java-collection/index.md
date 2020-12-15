@@ -1,11 +1,13 @@
 ---
-title: 'Java Collections'
+title: 'Java Collection'
 # subtitle: 'Create a beautifully simple website in under 10 minutes :rocket:'
 summary: A brief description of Java collections.
 authors:
 - admin
 tags:
 - Java
+- Collection
+- Collections
 categories:
 - Java
 date: "2020-09-10T00:00:00Z"
@@ -31,20 +33,20 @@ image:
 projects: []
 ---
 
-# Java Collections
+# Java Collection
 
 - Any group of individual objects which are represented as a single unit is known as the collection of the objects.  
-- The **Collection in Java is a framework that provides an architecture to store and manipulate the group of objects.  
+- The **Collection** in Java is a framework that provides an architecture to store and manipulate the group of objects.  
 - The **Collection** interface (**java.util.Collection**) and Map interface (**java.util.Map**) are the two main “root” interfaces of Java collection classes.  
 - Java Collections can achieve all the operations that you perform on a data such as **searching**, **sorting**, **insertion**, **manipulation**, and **deletion**.
 
 ## Java Collection Hierarchy
 
 ![java-collection-hierarchy](./java-collection-hierarchy.png)  
-![java-collections-hierarchy-1](./java-collections-hierarchy-1.png)  
-![java-collections-hierarchy-2](./java-collections-hierarchy-2.jpg) 
+![java-collection-hierarchy-1](./java-collection-hierarchy-1.png)  
+![java-collection-hierarchy-12](./java-collection-hierarchy-2.jpg) 
 
-The utility package, (java.util) contains all the classes and interfaces that are required by the collection framework. The collection framework contains an interface named as an iterable interface which provides the iterator to iterate through all the collections. This interface is extended by the main collection interface which acts as a root for the collection framework. All the collections extend this collection interface thereby extending the properties of the iterator and the methods of this interface.  
+The utility package, (**java.util**) contains all the classes and interfaces that are required by the collection framework. The collection framework contains an interface named as an iterable interface which provides the iterator to iterate through all the collections. This interface is extended by the main collection interface which acts as a root for the collection framework. All the collections extend this collection interface thereby extending the properties of the iterator and the methods of this interface.  
 
 ### Iterable Interface
 
@@ -239,6 +241,56 @@ EnumSet class is the specialized Set implementation for use with enum types. It 
 
 EnumMap class is the specialized Map implementation for enum keys. It inherits Enum and AbstractMap classes.  
 
+### Collections class
+This class consists exclusively of static methods that operate on or return collections. It contains polymorphic algorithms that operate on collections, "wrappers", which return a new collection backed by a specified collection, and a few other odds and ends.  
+The methods of this class all throw a NullPointerException if the collections or class objects provided to them are null.  
+
+#### Sorting in collection
+
+1. String objects
+  Collections.sort()  
+2. Wrapper class objects
+  Collections.sort()  
+3. User-defined class objects  
+  Collections.sort() with user-defined class implements comparable interface (compareTo() method)  
+
+### Comaprable
+
+- Java **Comparable interface** is used to order the objects of the user-defined class.  
+- This interface is found in **java.lang** package and contains only one method named compareTo(Object).  
+- It provides a single sorting sequence only, i.e., you can sort the elements on the basis of single data member only. For example, it may be rollno, name, age or anything else.  
+
+#### compareTo(Object obj) method
+
+public int compareTo(Object obj): It is used to compare the current object with the specified object. It returns  
+
+- positive integer, if the current object is greater than the specified object.  
+- negative integer, if the current object is less than the specified object.  
+- zero, if the current object is equal to the specified object.  
+
+### Comparator
+
+- Java Comparator interface is used to order the objects of a user-defined class.  
+- This interface is found in **java.util** package and contains 2 methods **compare(Object obj1,Object obj2)** and **equals(Object element)**.  
+- It provides multiple sorting sequences, i.e., you can sort the elements on the basis of any data member, for example, rollno, name, age or anything else.  
+
+#### Comparator Implementation
+
+- Non-generic Old Style  
+- Generic style  
+
+#### Java 8 Comparator Interface
+
+Java 8 has more comparator methods  
+
+
+### Properties class
+
+- The properties object contains key and value pair both as a string.  
+- The java.util.Properties class is the subclass of Hashtable.  
+- It can be used to get property value based on the property key. The Properties class provides methods to get data from the properties file and store data into the properties file. Moreover, it can be used to get the properties of a system.  
+- Recompilation is not required if the information is changed from a properties file: If any information is changed from the properties file, you don't need to recompile the java class. It is used to store information which is to be changed frequently.  
+
 
 ### A Little Deep In Queues
 
@@ -254,9 +306,11 @@ Implementation of a stack
 - A stack can be efficiently implemented using a linked list. The first element is the top of the stack and the last element is the bottom. It’s easy to push (prepend) an element and pop (remove) the first element in constant time.  
 
 #### The deque
+
 The word deque, usually pronounced deck, is short for double-ended queue. A deque is a list that supports insertion and removal at both ends. Thus, a deque can be used as a queue or as a stack.  
 
 #### Stacks, queues, and deques in the Java Collection framework
+
 - Java has interface Deque<E>. It is implemented by classes ArrayDeque<E> (which implements a list in an expandable array) and LinkedList<E>, so these two classes can be used for a queue and for a stack.  
 - Both ArrayDeque and LinkedList also implement interface Queue<E>, so you can use this interface to restrict operations to queue operations. For example, create a LinkedList and assign it to a Queue variable.  
 
@@ -269,7 +323,7 @@ Thereafter, use only q for the LinkedList and operations are restricted to queue
 ### Some Implementations
 
 - **LinkedList:** Although mainly known to be a List implementation, this class also implements the Queue interface. This implementation works by linking its elements together and going through that chain when iterating or searching for elements.  
-- **ArrayDeque:** An implementation of both Queue and Deque. Its backed up by an array, which can be increased when the number of elements increase over its current capacity.  
+- **ArrayDeque:** An implementation of both Queue and Deque. It's backed up by an array, which can be increased when the number of elements increase over its current capacity.  
 - **DelayQueue:** Can only contain elements which implement the Delayed interface - elements that become active after a certain time. The DelayQueue will only deliver elements whose delays have expired.  
 - **PriorityQueue:** Orders its elements according to their natural order or a Comparator (if provided). This means it doesn't work using the FIFO principle, but rather returns the element with the highest priority (defined by how they compare to each other).
 
@@ -299,6 +353,7 @@ Thereafter, use only q for the LinkedList and operations are restricted to queue
 
 #### Array vs ArrayList
 
+
 | Basis | Array | ArrayList |
 |-------|-------|-----------|
 | **Definition** | An array is a dynamically-created object. It serves as a container that holds the constant number of values of the same type. It has a contiguous memory location. | The ArrayList is a class of Java Collections framework. It contains popular classes like Vector, HashTable, and HashMap. |
@@ -323,6 +378,17 @@ Thereafter, use only q for the LinkedList and operations are restricted to queue
 | Manipulation with ArrayList is slow because it internally uses an array. If any element is removed from the array, all the bits are shifted in memory.   | Manipulation with LinkedList is faster than ArrayList because it uses a doubly linked list, so no bit shifting is required in memory.   |
 |An ArrayList class can act as a list only because it implements List only.  | LinkedList class can act as a list and queue both because it implements List and Deque interfaces. |
 |ArrayList is better for storing and accessing data.     |   LinkedList is better for manipulating data.   |
+
+
+#### ArrayList vs Vector
+
+| ArrayList      | Vector      |
+|----------------|-------------|
+| ArrayList is not synchronized. | Vector is synchronized.|
+| ArrayList increments 50% of current array size if the number of elements exceeds from its capacity. | Vector increments 100% means doubles the array size if the total number of elements exceeds than its capacity. |
+| ArrayList is not a legacy class. It is introduced in JDK 1.2. | Vector is a legacy class. |
+| ArrayList is fast because it is non-synchronized. | Vector is slow because it is synchronized, i.e., in a multithreading environment, it holds the other threads in runnable or non-runnable state until current thread releases the lock of the object. |
+| ArrayList uses the Iterator interface to traverse the elements. | A Vector can use the Iterator interface or Enumeration interface to traverse the elements. |
 
 
 #### List vs Set
@@ -356,15 +422,33 @@ A list can contain duplicate elements whereas Set contains unique elements only.
 | 1) HashMap is non synchronized. It is not-thread safe and can't be shared between many threads without proper synchronization code. | Hashtable is synchronized. It is thread-safe and can be shared with many threads. |
 | 2) HashMap allows one null key and multiple null values. | Hashtable doesn't allow any null key or value. |
 | 3) HashMap is fast. | Hashtable is slow. |
-| 4) We can make the HashMap as synchronized by calling this code  
-    Map m = Collections.synchronizedMap(hashMap); 
-| Hashtable is internally synchronized and can't be unsynchronized. |
+| 4) We can make the HashMap as synchronized by calling this code  <br> Map m = Collections.synchronizedMap(hashMap); | Hashtable is internally synchronized and can't be unsynchronized. |
 | 5) HashMap is traversed by Iterator.  | Hashtable is traversed by Enumerator and Iterator. |
 | 6) Iterator in HashMap is fail-fast.  | Enumerator in Hashtable is not fail-fast. |
 | 7) HashMap inherits AbstractMap class. | Hashtable inherits Dictionary class. |
 
+#### Collections Class vs Collection Framework
+
+| Collection | Collections |
+|------------|-------------|
+| The Collection is an interface | whereas Collections is a utility class. |
+| The Collection interface provides the standard functionality of data structure to List, Set, and Queue. | However, Collections class contains only static methods like sort(), min(), max(), fill(), copy(), reverse() etc. |
+| The Collection interface provides the methods that can be used for data structure | whereas Collections class provides the static methods which can be used for various operation on a collection. |
+
+#### Comparable vs Comparator
+
+| key     | Comparable | Comparator  |
+|---------|------------|-------------|
+| Package | Comparable interface belongs to java.lang package. | Comparator interface belongs to java.util package. |
+| Method  | The comparable interface has a method compareTo(Object a ) | The comparator has a method compare(Object o1, Object O2) |
+| Sorting uses | Comparable provides single sorting sequence. In other words, we can sort the collection on the basis of single element such as id or title or rating etc. | Collection.sort(List, Comparator) method can be used to sort the collection of Comparator type objects. |
+| Sorting sequence | Comparable provides single sorting sequence. | Comparator provides multiple sorting sequence. In other words, we can sort the collection on the basis of multiple elements such as id, title and rating etc. |
+| Original class | Comparable affects the original class, i.e., the actual class is modified. | Comparator provides compare() method to sort elements. |
 
 
+
+
+ 
 
 ## Links
 

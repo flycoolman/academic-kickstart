@@ -86,6 +86,50 @@ Deprecated since version 3.3, will be removed in version 3.10: Moved Collections
 ### collections.abc
 collections.abc — Abstract Base Classes for Containers  
 
+
+### for/while else
+[Why does python use 'else' after for and while loops?](https://stackoverflow.com/questions/9979970/why-does-python-use-else-after-for-and-while-loops)  
+A common construct is to run a loop until something is found and then to break out of the loop. The problem is that if I break out of the loop or the loop ends I need to determine which case happened. One method is to create a flag or store variable that will let me do a second test to see how the loop was exited.
+
+For example assume that I need to search through a list and process each item until a flag item is found and then stop processing. If the flag item is missing then an exception needs to be raised.
+
+Using the Python for...else construct you have
+
+    for i in mylist:
+        if i == theflag:
+            break
+        process(i)
+    else:
+        raise ValueError("List argument missing terminal flag.")
+Compare this to a method that does not use this syntactic sugar:
+
+    flagfound = False
+    for i in mylist:
+        if i == theflag:
+            flagfound = True
+            break
+        process(i)
+    if not flagfound:
+        raise ValueError("List argument missing terminal flag.")
+In the first case the raise is bound tightly to the for loop it works with. In the second the binding is not as strong and errors may be introduced during maintenance.
+
+### str.split()
+
+Return a list of the words in the string, using sep as the delimiter string.  
+for example, '1<>2<>3'.split('<>') returns ['1', '2', '3']  
+
+- The separator can be string, not only single character  
+- The return value of split  
+  * if not found, the return value is the original full string, like '1<>2<>3'.split('not') returns ['1<>2<>3']  
+  * if found, the strings are separated by the separator, like '1<>2<>3'.split('<>', 1) returns ['1', '2<>3']
+  * ''.split('<>') returns ['']
+  * ''.split('') raises exception  
+  * '  1  2   3  '.split() returns ['1', '2', '3'],  
+    '  1  2   3  '.split(None, 1) returns ['1', '2   3  '],  
+    '  1  2   3  '.split(None) returns ['1', '2', '3']  
+
+
+
 {{% alert note %}}
 TBD
 {{% /alert %}}

@@ -150,6 +150,59 @@ To Be Continued
 - Java  
 Not so easy to do
 
+### String equals vs ==
+
+Check if the characters in two strings are identical  
+
+- Python ==  
+
+        s1 = "Hello"
+        s2 = "Hello"
+        s3 = "Hello3"
+        s4 = "Hell" + "o"
+        s5 = "Hell"
+        s5 += "o"
+        id(s1)                 #  140701928086752
+        id(s2)                 #  140701928086752
+        id(s3)                 #  140701928160032
+        id(s4)                 #  140701928086752
+        id(s5)                 #  140701884560640
+        s1 == s2               #  True
+        s1 == s3               #  False
+        s1 == s4               #  True
+        s1 == s5               #  True
+
+- Java equals() vs ==  
+
+**==** to compare memory address or say identity in system
+**equals()** to compare the content of strings  
+
+        String s1 = "Hello";
+        String s2 = "Hello";
+        String s3 = "Hello3";
+        String s4 = "Hell" + "o";
+        String s5 = "Hell";
+        s5 = s5 + "o";
+        System.out.println(Integer.toHexString(s1.hashCode()));                //  42628b2
+        System.out.println(Integer.toHexString(s2.hashCode()));                //  42628b2
+        System.out.println(Integer.toHexString(s3.hashCode()));                //  809eedc1
+        System.out.println(Integer.toHexString(s4.hashCode()));                //  42628b2
+        System.out.println(Integer.toHexString(s5.hashCode()));                //  42628b2
+        System.out.println(Integer.toHexString(System.identityHashCode(s1)));  //  2038ae61
+        System.out.println(Integer.toHexString(System.identityHashCode(s2)));  //  2038ae61
+        System.out.println(Integer.toHexString(System.identityHashCode(s3)));  //  3c0f93f1
+        System.out.println(Integer.toHexString(System.identityHashCode(s4)));  //  2038ae61
+        System.out.println(Integer.toHexString(System.identityHashCode(s5)));  //  31dc339b
+        System.out.println(s1 == s2);                                          //  true
+        System.out.println(s1 == s3);                                          //  false
+        System.out.println(s1 == s4);                                          //  true
+        System.out.println(s1 == s5);                                          //  false, not same identity
+        System.out.println(s1.equals(s2));                                     //  true
+        System.out.println(s1.equals(s3));                                     //  false
+        System.out.println(s1.equals(s4));                                     //  true
+        System.out.println(s1.equals(s5));                                     //  true, contents are equal
+
+
 
 
 <br>
