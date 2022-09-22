@@ -53,6 +53,12 @@
   weight = 340
   parent = "coding"
 
+[[main]]
+  name = "HTML"
+  url = "coding/html/"
+  weight = 350
+  parent = "coding"
+
 #[[main]]
 #  name = "Publications"
 #  url = "#featured"
