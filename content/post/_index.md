@@ -1,5 +1,5 @@
 ---
-title: Posts
+title: Latest Posts
 
 # View.
 #   1 = List
@@ -13,5 +13,3 @@ header:
   image: ""
 ---
 
-
-## Post-100

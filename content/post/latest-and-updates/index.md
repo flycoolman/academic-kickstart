@@ -12,10 +12,10 @@ categories:
 - DevOps
 - Networking
 - Courses
-date: "2020-09-10T00:00:00Z"
+date: "2023-02-24T00:00:00Z"
 lastmod: "9999-12-31T00:00:00Z"
 featured: false
-draft: false
+draft: true
 
 # Featured image
 # To use, add an image named `featured.jpg/png` to your page's folder.
