@@ -33,12 +33,12 @@ projects: []
 
 ---
 [OSPF](#ospf)  
-[IS-IS](#is-is)  
+[ISIS](#isis)  
 [BGP](#bgp)  
 [VXLAN](#vxlan)  
 [EVPN](#evpn)  
 [SR](#sr)  
-[MPLS SR](#mpls-sr)  
+[SR-MPLS](#sr-mpls)  
 [SRv6](#srv6)  
 
 ---
@@ -128,8 +128,8 @@ Down--->Init--->2-Way---(DR Election)--->ExStart---(DD)--->Exchange(DD)--->Loadi
 
 ---
 
-## IS-IS
-IS-IS（Intermediate System-to-Intermediate System)  
+## IS-S
+ISIS（Intermediate System-to-Intermediate System)  
 
 - IS (Intermediate System)
 - ES（End System）
@@ -141,12 +141,12 @@ IS-IS（Intermediate System-to-Intermediate System)
 - DIS (Designated IS)
 - NSAP（Network Service Access Point）
 
-### IS-IS Address (NSAP Address)
+### ISIS Address (NSAP Address)
 [NSAP Addresses](https://sites.google.com/site/amitsciscozone/is-is/nsap-addresses?authuser=0)  
 #### IDP + DSP
 ![isis-address.png](isis-address.png)  
-IS-IS Address = IDP + DSP = (AFI + IDI) + (HO-DSP + ID + SEL)  
-**IS-IS Address = Area address + System ID + SEL**
+ISIS Address = IDP + DSP = (AFI + IDI) + (HO-DSP + ID + SEL)  
+**ISIS Address = Area address + System ID + SEL**
 Area Address = AFI + IDI + HO-DSP
 IDP = AFI + IDI  
 DSP = HO-DSP + ID + SEL  
@@ -168,7 +168,7 @@ DSP = HO-DSP + ID + SEL
 ![isis-levels](isis-levels.png)  
 
 ![isis-adjacency](isis-adjacency.png)  
-[IS-IS Adjacency and Area Types](https://www.cisco.com/c/en/us/support/docs/ip/integrated-intermediate-system-to-intermediate-system-is-is/200293-IS-IS-Adjacency-and-Area-Types.html) 
+[ISIS Adjacency and Area Types](https://www.cisco.com/c/en/us/support/docs/ip/integrated-intermediate-system-to-intermediate-system-is-is/200293-IS-IS-Adjacency-and-Area-Types.html) 
 
 ### Network Types
 - Broadcast
@@ -190,13 +190,13 @@ SNPA is MAC in Broadcast network
 - All routers on the broadcast network, including the DIS, form adjacencies with the Pseudonode. 
 - The DIS assigns the LAN ID (similar to System ID) to the broadcast network. The LAN ID is created by concatenating the System ID of the DIS with its Circuit ID (Pseudonode ID, in this case) for the attached network. All routers on the network will use the LAN ID assigned by the DIS.
 
-### IS-IS Packet
+### ISIS Packet
 
 | Type |                     PDU                  |   Abbr.      |
 |------|------------------------------------------|--------------|
-|  15  |  Level-1 LAN IS-IS Hello PDU             | L1 LAN IIH   |
-|  16  |  Level-2 LAN IS-IS Hello PDU             | L2 LAN IIH   |
-|  17  |  Point-to-Point IS-IS Hello PDU          | P2P IIH      |
+|  15  |  Level-1 LAN ISIS Hello PDU             | L1 LAN IIH   |
+|  16  |  Level-2 LAN ISIS Hello PDU             | L2 LAN IIH   |
+|  17  |  Point-to-Point ISIS Hello PDU          | P2P IIH      |
 |  18  |  Level-1 Link State PDU                  | L1 LSP       |
 |  20  |  Level-2 Link State PDU                  | L2 LSP       |
 |  24  |  Level-1 Complete Sequence Numbers PDU   | L1 CSNP      |
@@ -212,8 +212,8 @@ SNPA is MAC in Broadcast network
   * CSNP  
   CSNP contains all LSP digest information in an LSDB, synchronizing LSDBs for neighbor routers.
 
-### IS-IS Adjacency States
-There are only three adjacency states in IS-IS.  
+### ISIS Adjacency States
+There are only three adjacency states in ISIS.  
 Down----->Initializing------>Up  
 - Down  
 This is the initial state. Its means that no hellos have been received from the neighbor.
@@ -223,6 +223,11 @@ This state means that the local router has successfully received hellos from the
 
 - Up  
 Now it’s confirmed that neighboring router is receiving local router’s hellos. 
+
+### ISIS MAC ADDRESS
+- 0180.c200.0014 --- All L1 IS devices
+- 0180.c200.0015 --- All L2 IS devices
+- 0900.2b00.0005 --- All IS devices
 
 ---
 
@@ -234,6 +239,8 @@ Now it’s confirmed that neighboring router is receiving local router’s hello
 - Keepalive  
 - Route-refresh  
 - Notification  
+
+TCP 179
 
 ### BGP Attributes
 [BGP path attributes](https://techhub.hpe.com/eginfolib/networking/docs/switches/K-KA-KB/15-18/5998-8164_mrg/content/ch15s07.html)  
@@ -317,6 +324,7 @@ Continue, if bestpath is not yet selected.
 - VTEP (VXLAN Tunnel End Point)  
 - VXLAN Tunnel  
 - VSI (Virtual Switch Instance), 1:1 mapping to VXLAN
+- AC（Attachment Circuit)
 
 ### VXLAN Packet Format
 - 8-byte VXLAN header—VXLAN information for the frame.
@@ -326,11 +334,204 @@ Continue, if bestpath is not yet selected.
 - 20-byte outer IP header—Valid addresses of VTEPs or VXLAN multicast groups on the transport network. Devices in the transport network forward VXLAN packets based on the outer IP header.
 ![vxlan-packet-format](vxlan-packet-format.png)  
 
+### BUM Traffic
+BUM - Broadcast, Uknown unicast and Multicast  
+[Configuring EVPN VXLAN Layer 2 Overlay Network](https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst9600/software/release/17-3/configuration_guide/vxlan/b_173_bgp_evpn_vxlan_9600_cg/configuring_evpn_vxlan_layer_2_overlay_network.html)  
+- HER (Headend Replication, Ingress Replication)  
+  * Ingress replication, or headend replication, is a unicast approach to handle multidestination Layer 2 overlay BUM traffic.  
+  * Ingress replication involves an ingress device replicating every incoming BUM packet and sending them as a separate unicast to the remote egress devices.  
+  * Ingress replication happens through EVPN route type 3, also called as inclusive multicast ethernet tag (IMET) route. BGP EVPN ingress replication uses IMET route for auto-discovery of remote peers in order to set up the BUM tunnels over VXLAN.  
+  * Using ingress replication to handle BUM traffic can result in scaling issues as an ingress device needs to replicate the BUM traffic as many times as there are VTEPs associated with the Layer 2 VNI.
 
+- Underlay Multicast  
+BUM traffic forwarding through underlay multicast is achieved by mapping a Layer 2 VNI to the multicast group.  
+
+### Flooding Suppression
+- ARP Flooding Suppression  
+- IPv6 Neighbor Discovery Flooding Suppression  
 
 ---
 
-## EVPN
+## EVPN  
+Ethernet Virtual Private Network (EVPN)  
+- Control Plane --- MP-BGP  
+- Data Plane --- VXLAN  
+- IRB (Integrated routing and bridging)  
+MP-BGP advertises both Layer 2 and Layer 3 host reachability information to provide optimal forwarding paths and minimize flooding.  
+
+### BGP EVPN Routes     
+
+| Type  |         Name                               |   Abbr.        |
+|-------|--------------------------------------------|----------------|
+| 1     | Ethernet autodiscovery route               |                |
+|**2**  | **MAC/IP advertisement route**             | **MAC/IP**     |
+|**3**  | **Inclusive Multicast Ethernet Tag route** | **IMET**       |
+| 4     | Ethernet Segment Route                     |                |
+|**5**  | **IP Prefix Route**                        | **IP Prefix**  |
+| 6     | Selective Multicast Ethernet Tag routes    |                |
+| 7     | NLRI to sync IGMP joins                    |                |
+| 8     | NLRI to sync IGMP leaves                   |                |
+
+- **Type 1 route, Ethernet autodiscovery route**  
+**Advertises ES information in multihomed sites**  
+  * Type 1 routes are for networkwide messages. Ethernet autodiscovery routes are advertised on a per end virtual identifier (EVI) and per Ethernet segment identifier (ESI) basis. The Ethernet autodiscovery routes are required when a customer edge (CE) device is multihomed. When a CE device is single-homed, the ESI is zero. This route type is supported by all EVPN switches and routers.
+
+  * An ESI can participate in more than one broadcast domain; for example, when a port is trunked. An ingress provider edge (PE) device that reaches the MAC on that ESI must have Type 1 routes to perform split horizon and fast withdraw. Therefore, a Type 1 route for an ESI must reach all ingress PE devices importing a virtual network identifier (VNI) or tag (broadcast domains) in which that ESI is a member.  
+
+- **Type 2 route, MAC with IP advertisement route**  
+**Advertises MAC reachability information and host route information (host ARP information)**  
+  * Type 2 routes are per-VLAN routes, so only PEs that are part of a VNI need these routes. EVPN allows an end host’s IP and MAC addresses to be advertised within the EVPN Network Layer Reachability Information (NLRI). This allows for control plane learning of ESI MAC addresses. Because there are many Type 2 routes, a separate route-target auto-derived per VNI helps to confine their propagation. This route type is supported by all EVPN switches and routers.  
+
+- **Type 3 route, Inclusive Multicast Ethernet Tag route**  
+**Advertises VTEP and VXLAN mappings for automating VTEP discovery, VXLAN tunnel establishment, and VXLAN tunnel assignment**  
+  * Type 3 routes are per-VLAN routes; therefore, only PE devices that are part of a VNI need these routes. An inclusive multicast Ethernet tag route sets up a path for broadcast, unknown unicast, and multicast (BUM) traffic from a PE device to the remote PE device on a per-VLAN, per-EVI basis. Because there are many Type 3 routes, a separate route-target auto-derived per VNI helps in confining their propagation. This route type is supported by all EVPN switches and routers.  
+
+- **Type 4 route, Ethernet Segment Route**  
+**Advertises ES and VTEP mappings**  
+  * An Ethernet segment identifier (ESI) allows a CE device to be multihomed to two or more PE devices—in single/active or active/active mode. PE devices that are connected to the same Ethernet segment discover each other through the ESI. This route type is supported by all EVPN switches and routers.  
+
+- **Type 5 route, IP prefix Route**  
+**Advertises BGP IPv4 unicast routes as IP prefixes**  
+  * An IP prefix route provides encoding for inter-subnet forwarding. In the control plane, EVPN Type 5 routes are used to advertise IP prefixes for inter-subnet connectivity across data centers. To reach a tenant using connectivity provided by the EVPN Type 5 IP prefix route, data packets are sent as Layer 2 Ethernet frames encapsulated in the VXLAN header over the IP network across the data centers.  
+
+
+- **Type 6 route, Selective Multicast Ethernet Tag routes**
+
+- **Type 7 route, Network Layer Reachability Information (NLRI) to sync IGMP joins.**
+
+- **Type 8 route, NLRI to sync IGMP leaves.**
+
+### BGP EVPN Route, VXLAN and Tenant
+MP-BGP uses the route distinguisher (**RD**) field to differentiate BGP EVPN routes of different VXLANs and uses route targets to control the advertisement and acceptance of BGP EVPN routes. MP-BGP supports the following types of route targets:
+- **Export target**  
+A VTEP sets the export targets for BGP EVPN routes learned from the local site before advertising them to remote VTEPs.
+- **Import target**  
+A VTEP checks the export targets of BGP EVPN routes received from remote VTEPs. The VTEP imports the BGP EVPN routes only when their export targets match the local import targets.
+
+### Configuration Automation
+VTEPs use BGP EVPN routes to discover VTEP neighbors, establish VXLAN tunnels, and assign the tunnels to VXLANs.
+
+- **IMET** route  
+VTEPs advertise the VXLAN IDs they have through IMET routes. If two VTEPs have the same VXLAN ID, they automatically establish a VXLAN tunnel and assign the tunnel to the VXLAN.
+
+- **MAC/IP** advertisement route and **IP prefix** advertisement route  
+In the EVPN gateway deployment, VTEPs advertise MAC/IP advertisement routes or IP prefix advertisement routes with the export targets. When a VTEP receives a route, it compares the export targets of the route with the local import targets. If the route targets match, the VTEP establishes a VXLAN tunnel with the remote VTEP and associates the tunnel with the L3 VXLAN ID of the corresponding VPN instance.
+
+### MAC Learning
+- Local MAC Learning
+- Remote MAC Learning
+
+### Layer 2 Forwarding
+- Unicast traffic
+- Flood (BUM Traffic)
+
+### Layer 3 Forwarding
+- Centralized EVPN Gateway deployment
+- Distributed EVPN Gateway deployment  
+![distributed-evpn-gateway](distributed-evpn-gateway.png)  
+
+### Symmetric IRB
+Symmetric IRB uses the same Layer-3 VNI for bi-directional traffic between two hosts on different VLANs/VNIs.  
+- Distributed EVPN gateway  
+A distributed EVPN gateway uses symmetric IRB for Layer 3 forwarding, which means both the ingress and egress gateways perform Layer 2 and Layer 3 lookups.
+
+- L3 VXLAN ID --- Also called L3 VNI  
+An L3 VXLAN ID identifies the traffic of a routing domain where devices have Layer 3 reachability. An L3 VXLAN ID is associated with one VPN instance. Distributed EVPN gateways use VPN instances to isolate traffic of different services on VXLAN tunnel interfaces.
+
+- Router MAC address  
+Each distributed EVPN gateway has a unique router MAC address used for inter-gateway forwarding. The MAC addresses in the inner Ethernet header of VXLAN packets are router MAC addresses of distributed EVPN gateways.
+
+### Symmetric IRB Forwarding Process
+[Symmetric IRB](https://www.arubanetworks.com/techdocs/AOS-CX/10.09/HTML/vxlan/Content/Chp_EVPN/sym-irb-ove-fl-gl-ll-xl-10.htm)  
+
+#### Distributed EVPN Gateway Traffic Forwarding
+[Traffic forwarding](http://www.h3c.com/en/Support/Resource_Center/Technical_Documents/Routers/Catalog/MSR5600/MSR5600/Configure/Configuration_Guides/H3C_MSR_5600_CG(V7)-R0707-6W301/22/201904/1174909_294551_0.htm#_Toc3538740)  
+
+A distributed EVPN gateway can work in one of the following mode:
+
+- **Switching and routing mode**  
+Forwards Layer 2 traffic based on the MAC address table and forwards Layer 3 traffic based on the FIB table. In this mode, you need to enable ARP flood suppression on the distributed EVPN gateway to reduce flooding.
+
+- **Routing mode**  
+Forwards both Layer 2 and Layer 3 traffic based on the FIB table. In this mode, you need to enable local proxy ARP on the distributed EVPN gateway.
+
+##### Intra-site Layer 3 Forwarding
+![intra-site](intra-site.png)  
+
+##### Inter-site Layer 3 Forwarding
+![inter-site](inter-site.png)  
+
+![sym-irb](sym-irb.jpg)  
+1. Host1 in VLAN 10/VNI 10 connected to VTEP1 sends traffic to Host2 in VLAN 20/VNI 20 connected to VTEP2.  
+  **a.** Traffic from Host1 is sent to VTEP1 VLAN 10/ VNI 10 gateway MAC.
+
+2. VTEP1 routes traffic in the VRF (mapping to L3-VNI 1020), encapsulates traffic with VXLAN, adds outer Source/Destination IP, VNI info and sends traffic to VTEP2.  
+  **a.** VTEP1 does not need to have a MAC/ARP entry for Host2.  
+  **b.** VTEP1 learns the prefix route and/or host route corresponding to Host2 via EVPN Route type 5 or 2 respectively thus facilitating routing to the destination.  
+  **c.** The inner Source MAC is changed to VTEP1 router MAC and inner Destination MAC is changed to VTEP2 router MAC.  
+3. VTEP2 decapsulates outer VXLAN, routes and sends the traffic to Host2 on VLAN 20/VNI 20.  
+  **a.** Host2 will see source MAC as VTEP2 gateway MAC.  
+
+
+Return traffic from Host2 to Host1 is similar, traffic from Host2 is sent to VTEP2 VLAN20/VNI 20 gateway MAC. VTEP2 routes traffic to L3 VNI 1020, encapsulates and sends the traffic to VTEP1. VTEP1 decapsulates, route and send the traffic to Host1 on VLAN 10/VNI 10.
+
+As seen from the traffic flow:
+
+- Routing is used on both ingress and egress VTEPs.
+- Bi-directional traffic uses symmetric path; same L3 VNI in both directions.
+- VTEPs do not need to hold unnecessary ARP/MAC resources.
+- Destination VLAN/VNI does not have to be configured on source VTEP.
+
+#### Asymmetric IRB Forwarding Process
+[Asymmetric IRB](https://www.arubanetworks.com/techdocs/AOS-CX/10.09/HTML/vxlan/Content/Chp_EVPN/asy-irb-fl-gl-ll-xl-10.htm)  
+Asymmetric IRB uses different VNIs for bi-directional traffic between 2 hosts on different Layer-2 VNIs.  
+![asym-irb](asym-irb.jpg)  
+
+1. Host1 in VLAN 10/VNI 10 connected to VTEP1 sends traffic to Host2 in VLAN 20/VNI 20 connected to VTEP2.  
+  **a.** Traffic from Host1 is sent to VTEP1 VLAN 10/ VNI 10 gateway MAC.  
+
+2. VTEP1 routes traffic to VNI 20, encapsulates frame with VXLAN, adds outer Source/Destination IP, VNI info and sends traffic to VTEP2.  
+  **a.** VTEP1 should already have a MAC/ARP entry for Host2.  
+  **b.** The inner Source MAC is changed to VTEP1 VLAN 20 gateway MAC and inner Destination MAC is changed to MAC2 which belongs to Host2.  
+
+3. VTEP2 decapsulates outer VXLAN, bridges and sends the traffic to Host2 on VLAN 20/VNI 20.  
+  **a.** Host2 will see source MAC as VTEP1.  
+
+Return traffic from Host2 to Host1 is similar. Traffic from Host2 is sent to VTEP2 VLAN20/VNI 20 gateway MAC. VTEP2 routes traffic to VNI 10, encapsulates and sends the traffic to VTEP1. VTEP1 will decapsulate, bridge and send the traffic to Host1 on VLAN 10/VNI 10.  
+
+As seen from the traffic flow:  
+
+- Asymmetric IRB needs both source and destination Layer-2 VNIs to be configured on the ingress VTEP.
+- Routing and bridging is used on the ingress VTEP.
+- Bridging is used on the egress VTEP.
+- Bi-directional traffic uses asymmetric paths:
+  * Host1 to Host2 uses VNI 10 -> VNI 20.
+  * Host2 to Host1 uses VNI 20 -> VNI 10.
+- Asymmetric IRB will lead to increased ARP/MAC scale on VTEPs as they need to contain MAC/ARP of both source/destination hosts.
+- If Asymmetric IRB is used, all subnets/VNIs have to be configured on all VTEPs. As previously shown, it is not mandatory for a subnet to span across all VTEPs in both Data Center and Campus networks, e.g. 10.10.220.0/24 only exists on Leaf1A/1B, Leaf2A/2B in Figure 2, 10.10.220.0/24 only exists in Building#1.
+
+
+
+### ARP flood suppression
+ARP flood suppression reduces ARP request broadcasts by enabling the VTEP to reply to ARP requests on behalf of VMs.
+#### Basic of ARP flood suppression  
+This feature snoops ARP requests, ARP responses, and BGP EVPN routes to populate the ARP flood suppression table with local and remote MAC addresses. If an ARP request has a matching entry, the VTEP replies to the request on behalf of the VM. If no match is found, the VTEP floods the request to both local and remote sites.  
+ 
+#### Detailed process of ARP flood suppression
+![ARP-flood-suppression](ARP-flood-suppression.png) 
+1. VM 1 sends an ARP request to obtain the MAC address of VM 7.
+2. VTEP 1 creates a suppression entry for VM 1, floods the ARP request in the VXLAN, and sends the suppression entry to VTEP 2 and VTEP 3 through BGP EVPN.
+3. VTEP 2 and VTEP 3 de-encapsulate the ARP request and broadcast the request in the local site.
+4. VM 7 sends an ARP reply.
+5. VTEP 2 creates a suppression entry for VM 7, forwards the ARP reply to VTEP 1, and sends the suppression entry to VTEP 1 and VTEP 3 through BGP EVPN.
+6. VTEP 1 de-encapsulates the ARP reply and forwards the ARP reply to VM 1.
+7. VM 4 sends an ARP request to obtain the MAC address of VM 1.
+8. VTEP 1 creates a suppression entry for VM 4 and replies to the ARP request.
+9. VM 10 sends an ARP request to obtain the MAC address of VM 1.
+10. VTEP 3 creates a suppression entry for VM 10 and replies to the ARP request.
+
+
+
 
 ---
 
@@ -338,17 +539,66 @@ Continue, if bestpath is not yet selected.
 
 ---
 
-## MPLS SR
+## SR-MPLS
 
 ---
 
 
 ## SRv6
 
+
+DRv6 TE Policy
+### SRv6 VPN
+
+#### L3VPN over SRv6
+- IP L3VPN over SRv6
+- EVPN L3VPN over SRv6
+
+#### L2VPN over SRv6
+- EVPN VPWS over SRv6
+- EVPN VPLS over SRv6。
+
+
+
+
+
+### SRv6 SFC
+SRv6 Based Service Function Chain
+- SC (Service Classifier)
+- SF(Service Function)
+- SFF(Service Function Forwarder)
+- Tail Endpoint
+
+
+G-SRv6
+
+### L3VPN over SRv6
+#### L3VPN over SRv6 TE 
+#### L3VPN over SRv6 BE 
+
+### L3VPN over SRv6 TE
+#### IP L3VPN over SRv6 TE Policy
+
+#### EVPN L3VPN over SRv6 TE Policy
+
+### L3VPN over SRv6 BE
+#### IP L3VPN over SRv6 BE
+
+#### EVPN L3VPN over SRv6 BE
+
+[Segment Routing](https://www.h3c.com/cn/Products___Technology/Technology/ComwareV7/Segment_Routing/)  
+
+
+
 ---
 
+## Links
+1. [EVPN Configuration Guide](http://www.h3c.com/en/Support/Resource_Center/Technical_Documents/Routers/Catalog/MSR5600/MSR5600/Configure/Configuration_Guides/H3C_MSR_5600_CG(V7)-R0707-6W301/22/201904/1174909_294551_0.htm) 
+2. [Understanding EVPN Pure Type 5 Routes](https://www.juniper.net/documentation/us/en/software/junos/evpn-vxlan/topics/concept/evpn-route-type5-understanding.html)
+3. [Symmetric IRB](https://www.arubanetworks.com/techdocs/AOS-CX/10.09/HTML/vxlan/Content/Chp_EVPN/sym-irb-ove-fl-gl-ll-xl-10.htm)  
+4. [Traffic forwarding](http://www.h3c.com/cn/d_201905/1182386_30005_0.htm)  
 
-
+---  
 
 <br>
 
